@@ -199,13 +199,7 @@
     line-height: 1.6;
     margin-bottom: 10px;
   }
-  .hint-text {
-    font-size: .9rem;
-    font-style: italic;
-    color: #8B6BB0;
-    font-weight: 600;
-    margin-bottom: 16px;
-  }
+
 
   /* ── OPTIONS (Quiz 1) ─────────────────────────────────── */
   .options { display: flex; flex-direction: column; gap: 10px; }
@@ -509,7 +503,7 @@ const total = () => QUESTIONS.length;
 function buildQ1() {
   const wrap = document.getElementById('cards1');
   wrap.innerHTML = '';
-  QUESTIONS.forEach((q, i) => {
+  shuffle(QUESTIONS).forEach((q, i) => {
     const opts = shuffle([q.term, ...q.mcWrong]);
     const card = document.createElement('div');
     card.className = 'card';
@@ -517,7 +511,6 @@ function buildQ1() {
     card.innerHTML = `
       <div class="q-badge">Question ${i+1} of ${total()}</div>
       <div class="card-q">${q.mcDef}</div>
-      <div class="hint-text">💡 ${q.hint}</div>
       <div class="options">
         ${opts.map(o => `<button class="opt-btn"
           onclick="checkMC(this,${i},'${esc(o)}','${esc(q.term)}')">${o}</button>`).join('')}
@@ -538,7 +531,7 @@ function checkMC(btn, idx, selected, correct) {
   const fb = document.getElementById(`fb1-${idx}`);
   if (selected === correct) {
     btn.classList.add('correct');
-    fb.textContent = '✅ Correct! Great job, Debbie!';
+    fb.textContent = '✅ Correct!';
     fb.className = 'feedback fb-correct';
     state[1].correct++;
   } else {
@@ -556,14 +549,13 @@ function checkMC(btn, idx, selected, correct) {
 function buildQ2() {
   const wrap = document.getElementById('cards2');
   wrap.innerHTML = '';
-  QUESTIONS.forEach((q, i) => {
+  shuffle(QUESTIONS).forEach((q, i) => {
     const card = document.createElement('div');
     card.className = 'card';
     card.style.animationDelay = (i * 0.04) + 's';
     card.innerHTML = `
       <div class="q-badge">Question ${i+1} of ${total()}</div>
       <div class="card-q">${q.fillClue}</div>
-      <div class="hint-text">💡 ${q.hint}</div>
       <div class="fill-wrap">
         <input class="fill-input" id="inp2-${i}" type="text"
           placeholder="Type your answer…"
@@ -595,7 +587,7 @@ function checkFill(idx) {
   const isCorrect = q.accept.some(a => val === a || val.replace(/\s+/g,'') === a.replace(/\s+/g,''));
   if (isCorrect) {
     input.classList.add('correct');
-    fb.textContent = '✅ Perfect! You nailed it!';
+    fb.textContent = '✅ Correct!';
     fb.className = 'feedback fb-correct';
     state[2].correct++;
   } else {
