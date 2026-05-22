@@ -352,123 +352,123 @@
 const QUESTIONS = [
   {
     term: "Occurrence",
-    hint: "Not accidental, not incident",
     mcDef: "An event that results in an insured loss. In liability insurance, the loss does NOT have to be sudden — it can result from continuous or repeated exposure causing bodily injury or property damage neither expected nor intended by the insured.",
     mcWrong: ["Accident", "Incident", "Exposure"],
     fillClue: "I am an event that results in an insured loss. In liability, my loss does NOT need to be sudden — it can come from continuous exposure. What am I?",
-    accept: ["occurrence"]
+    accept: ["occurrence"],
+    explain: "An Occurrence is broader than an Accident. In liability insurance, damage can build up slowly over time — like chemical exposure — and still be covered. Remember: it doesn't have to be sudden!"
   },
   {
     term: "Risk Reduction",
-    hint: "Not hazard reduction, not fire loss reduction",
     mcDef: "Taking steps to reduce the probability or severity of a possible loss. Example: installing alarms and sprinkler systems to lower fire risk. One of the 4 major risk management techniques.",
     mcWrong: ["Hazard Reduction", "Fire Loss Reduction", "Risk Avoidance"],
     fillClue: "I am one of the 4 major risk management techniques. I involve taking steps to lower the probability OR severity of a possible loss — like installing sprinklers. What am I?",
-    accept: ["risk reduction"]
+    accept: ["risk reduction"],
+    explain: "Risk Reduction means taking action to lower either the chance of a loss happening OR how bad it would be. Installing sprinklers doesn't prevent fire — but it reduces the damage. That's risk reduction!"
   },
   {
     term: "Moral Hazard",
-    hint: "Not morale hazard, not intentional hazard",
     mcDef: "A condition of morals or habits that increases the probability of loss from a peril. Extreme example: an individual who previously burned their own property to collect insurance.",
     mcWrong: ["Marale Hazard", "Morale Hazard", "Intentional Hazard"],
     fillClue: "I am a condition of morals or habits that raises the probability of loss. An extreme example is someone who burns their own home to collect insurance money. What kind of hazard am I?",
-    accept: ["moral hazard"]
+    accept: ["moral hazard"],
+    explain: "Moral Hazard is about bad character or dishonesty — someone who deliberately causes a loss to get paid. Don't confuse it with Morale Hazard, which is carelessness. Moral = intentional dishonesty."
   },
   {
     term: "Peril",
-    hint: "Not hazard, not risk",
     mcDef: "The cause of possible loss.",
     mcWrong: ["Hazard", "Risk", "Exposure"],
     fillClue: "I am the cause of possible loss. Fire, theft, and flood are examples of me. What am I?",
-    accept: ["peril"]
+    accept: ["peril"],
+    explain: "A Peril is the actual cause of loss — fire, flood, theft, earthquake. A Hazard is what increases the chance of a peril happening. Think: Peril = the cause, Hazard = the condition that makes it more likely."
   },
   {
     term: "Speculative Risk",
-    hint: "Not pure risk, not normal risk",
     mcDef: "Uncertainty as to whether a gain OR loss will occur. Example: a business that could make money or lose it. These types of risks are NOT insurable — they are illegal in insurance.",
     mcWrong: ["Pure Risk", "Normal Risk", "Insurable Risk"],
     fillClue: "I involve both a chance of LOSS and a chance of GAIN — like a business that could profit or fail. I am ILLEGAL to insure. What am I?",
-    accept: ["speculative risk"]
+    accept: ["speculative risk"],
+    explain: "Speculative Risk has two possible outcomes — you could win OR lose, like gambling or starting a business. Insurance only covers Pure Risk (loss only). Speculative Risk is actually illegal to insure!"
   },
   {
     term: "Insurer",
-    hint: "Not insured, not owner",
     mcDef: "The party to an insurance arrangement who undertakes to indemnify for losses, provide pecuniary benefits, or render services. Preferred over 'carrier' or 'company' — a functional word applicable without ambiguity. Used in statutory law.",
     mcWrong: ["Insured", "Owner", "Carrier"],
     fillClue: "I am the party who undertakes to indemnify for losses in an insurance arrangement. I am the preferred term over 'carrier' or 'company' in statutory law. What am I?",
-    accept: ["insurer"]
+    accept: ["insurer"],
+    explain: "The Insurer is the insurance company — the one who promises to pay. The Insured is the person being covered. In statutory law, 'Insurer' is preferred over 'carrier' or 'company' because it works for all types of organizations."
   },
   {
     term: "Exposure",
-    hint: "Not hazard, not peril",
     mcDef: "The state of being subject to the possibility of loss. The extent of risk as measured by payroll, gate receipts, area, or other standards. Also: the possibility of loss to a risk caused by its surroundings.",
     mcWrong: ["Hazard", "Peril", "Risk"],
     fillClue: "I am the state of being subject to the possibility of loss. My extent is measured by payroll, gate receipts, or area. What am I?",
-    accept: ["exposure"]
+    accept: ["exposure"],
+    explain: "Exposure measures how much risk exists — it's the size of the risk. A building next to a dynamite factory has high exposure because of its surroundings. Payroll, area, and gate receipts are all ways to measure exposure."
   },
   {
     term: "Law of Large Numbers",
-    hint: "Not actuary law, not mortality table",
     mcDef: "This law states that the larger the number of exposures considered, the more closely the losses reported will match the underlying probability of loss. Simplest example: the more times you flip a coin, the closer results come to 50% heads and 50% tails.",
     mcWrong: ["Actuary Law", "Mortality Table", "Loss Probability Law"],
     fillClue: "I state that the LARGER the number of exposures, the more closely losses will match the underlying probability. Coin-flipping is my simplest example. What law am I?",
-    accept: ["law of large numbers", "law of large number"]
+    accept: ["law of large numbers", "law of large number"],
+    explain: "The Law of Large Numbers is why insurance works! The more people insured, the more accurately the insurer can predict losses. Flip a coin 10 times — results vary. Flip it 10,000 times — you'll get very close to 50/50."
   },
   {
     term: "Accident",
-    hint: "Not incident, not continuity",
     mcDef: "A fortuitous event — unforeseen and unintended.",
     mcWrong: ["Incident", "Continuity", "Occurrence"],
     fillClue: "I am a fortuitous event — unforeseen and unintended. What am I?",
-    accept: ["accident"]
+    accept: ["accident"],
+    explain: "An Accident is fortuitous — meaning it happened by chance, not on purpose. It must be unforeseen AND unintended. This is different from an Occurrence, which can include gradual or repeated exposure."
   },
   {
     term: "Protection",
-    hint: "Not conditions, not restrictions",
     mcDef: "A term used interchangeably with 'coverage' to denote the insurance provided under a policy. Also used to indicate the existence of fire-fighting facilities in an area known as a 'protected' area.",
     mcWrong: ["Conditions", "Restrictions", "Coverage Type"],
     fillClue: "I am used interchangeably with 'coverage' and also describe the existence of fire-fighting facilities in a 'protected' area. What am I?",
-    accept: ["protection"]
+    accept: ["protection"],
+    explain: "Protection means the same thing as coverage in insurance. It also refers to whether an area has fire-fighting services — a 'protected' area has them, which affects how property insurance is rated."
   },
   {
     term: "Insurable Risk",
-    hint: "Not speculative risk, not loss risk",
     mcDef: "A risk that meets most of the following: the loss must be capable of being defined, it must be accidental, it must be large enough to cause hardship to the insured, it must belong to a homogeneous group large enough to make losses predictable, and the insurer must be able to calculate the chance of loss.",
     mcWrong: ["Speculative Risk", "Loss Risk", "Pure Hazard"],
     fillClue: "I meet all the key requisites: I'm accidental, definite, large enough to cause hardship, and the insurer can calculate my probability. What am I?",
-    accept: ["insurable risk"]
+    accept: ["insurable risk"],
+    explain: "An Insurable Risk must check several boxes: it must be accidental, definite, cause real hardship, belong to a large enough group to predict losses, and the insurer must be able to calculate the cost. If it doesn't meet these — it can't be insured!"
   },
   {
     term: "Hazard",
-    hint: "A condition — not the cause of loss itself",
     mcDef: "A condition that increases the chance of loss. It is NOT the cause of loss itself, but something that makes a loss more likely or more severe when a peril occurs.",
     mcWrong: ["Peril", "Occurrence", "Exposure"],
     fillClue: "I increase the probability or severity of loss from a peril, but I am NOT the cause of loss — I am just a condition. What am I?",
-    accept: ["hazard"]
+    accept: ["hazard"],
+    explain: "A Hazard is a condition that makes a loss more likely — not the loss itself. Storing gasoline near a furnace is a hazard. The fire (peril) causes the loss, but the gasoline storage (hazard) made it more likely."
   },
   {
     term: "Pure Risk",
-    hint: "Only chance of loss, no chance of gain",
     mcDef: "A type of risk that involves ONLY the chance of loss — there is no possibility of financial gain. Insurance is designed to cover only this type of risk.",
     mcWrong: ["Speculative Risk", "Moral Risk", "Normal Risk"],
     fillClue: "I involve ONLY the chance of loss — no possibility of gain. Insurance is designed to cover me. What am I?",
-    accept: ["pure risk"]
+    accept: ["pure risk"],
+    explain: "Pure Risk = loss or no loss, never gain. Your house either burns down or it doesn't — you can't profit from it. This is exactly what insurance is designed to cover. Speculative Risk (chance of gain OR loss) is NOT insurable."
   },
   {
     term: "Affordable",
-    hint: "Cost of insurance must be ___",
     mcDef: "One of the requirements for determining an insurable risk: the cost of the insurance must be this, so that people can actually buy it.",
     mcWrong: ["Calculable", "Predictable", "Mandatory"],
     fillClue: "To be an insurable risk, the cost of insurance must be _______ — meaning the insured can actually pay for it.",
-    accept: ["affordable"]
+    accept: ["affordable"],
+    explain: "For a risk to be insurable, the premium must be affordable — if nobody can pay for the coverage, it's not practical. The cost must make sense relative to the value of what's being protected."
   },
   {
     term: "Catastrophic",
-    hint: "Losses that are ___ in nature are NOT ideally insurable",
     mcDef: "Losses of this type are NOT covered under an ideally insurable loss exposure. They are simply too widespread and large for insurance companies to handle — for example, a nuclear war or a massive natural disaster affecting millions at once.",
     mcWrong: ["Accidental", "Definite", "Measurable"],
     fillClue: "Losses that are _______ in nature would NOT be covered under an ideally insurable loss exposure — they're too large for insurers to manage.",
-    accept: ["catastrophic"]
+    accept: ["catastrophic"],
+    explain: "Catastrophic losses hit too many people at once — like a nuclear disaster or a massive earthquake wiping out an entire city. Insurance works by spreading risk across many people, but if everyone loses at once, the system collapses. That's why catastrophic losses are excluded."
   },
 
   // ─────────────────────────────────────────────────────────
@@ -478,11 +478,11 @@ const QUESTIONS = [
   // TEMPLATE:
   // {
   //   term: "Term Name",
-  //   hint: "Memory hook from Debbie's notes",
   //   mcDef: "The full definition shown in Quiz 1",
   //   mcWrong: ["Wrong 1", "Wrong 2", "Wrong 3"],
   //   fillClue: "Clue for Quiz 2 (fill-in-the-blank style)",
-  //   accept: ["correct answer lowercase", "alternate spelling if needed"]
+  //   accept: ["correct answer lowercase", "alternate spelling if needed"],
+  //   explain: "Why this is the answer. Keep it helpful, clear, and encouraging!"
   // },
   // ─────────────────────────────────────────────────────────
 ];
@@ -513,7 +513,7 @@ function buildQ1() {
       <div class="card-q">${q.mcDef}</div>
       <div class="options">
         ${opts.map(o => `<button class="opt-btn"
-          onclick="checkMC(this,${i},'${esc(o)}','${esc(q.term)}')">${o}</button>`).join('')}
+          onclick="checkMC(this,'${esc(q.explain)}','${esc(o)}','${esc(q.term)}')">${o}</button>`).join('')}
       </div>
       <div class="feedback" id="fb1-${i}"></div>
     `;
@@ -522,21 +522,21 @@ function buildQ1() {
   updateUI(1);
 }
 
-function checkMC(btn, idx, selected, correct) {
+function checkMC(btn, explain, selected, correct) {
   const card = btn.closest('.card');
   card.querySelectorAll('.opt-btn').forEach(b => {
     b.disabled = true;
     if (b.textContent.trim() === correct) b.classList.add('correct');
   });
-  const fb = document.getElementById(`fb1-${idx}`);
+  const fb = card.querySelector('.feedback');
   if (selected === correct) {
     btn.classList.add('correct');
-    fb.textContent = '✅ Correct!';
+    fb.innerHTML = `✅ <strong>Correct!</strong><br><span style="font-weight:600">${explain}</span>`;
     fb.className = 'feedback fb-correct';
     state[1].correct++;
   } else {
     btn.classList.add('wrong');
-    fb.innerHTML = `❌ Not quite! The answer is: <strong>${correct}</strong>`;
+    fb.innerHTML = `❌ The answer is: <strong>${correct}</strong><br><span style="font-weight:600">${explain}</span>`;
     fb.className = 'feedback fb-wrong';
   }
   state[1].answered++;
@@ -587,12 +587,12 @@ function checkFill(idx) {
   const isCorrect = q.accept.some(a => val === a || val.replace(/\s+/g,'') === a.replace(/\s+/g,''));
   if (isCorrect) {
     input.classList.add('correct');
-    fb.textContent = '✅ Correct!';
+    fb.innerHTML = `✅ <strong>Correct!</strong><br><span style="font-weight:600">${q.explain}</span>`;
     fb.className = 'feedback fb-correct';
     state[2].correct++;
   } else {
     input.classList.add('wrong');
-    fb.innerHTML = `❌ The answer is: <strong>${q.term}</strong>`;
+    fb.innerHTML = `❌ The answer is: <strong>${q.term}</strong><br><span style="font-weight:600">${q.explain}</span>`;
     fb.className = 'feedback fb-wrong';
   }
   state[2].answered++;
