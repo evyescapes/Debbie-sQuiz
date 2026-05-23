@@ -8,231 +8,45 @@
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { -webkit-text-size-adjust: 100%; }
-
-body {
-  font-family: 'Inter', sans-serif;
-  background: #f0faf5;
-  color: #1a2e25;
-  min-height: 100vh;
-  padding-bottom: 60px;
-}
-
-/* HEADER */
-.hero {
-  background: linear-gradient(160deg, #e8f7f0 0%, #f5fdf9 100%);
-  text-align: center;
-  padding: 44px 24px 32px;
-  border-bottom: 1px solid #c8e8d8;
-}
-.hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.9rem, 7vw, 2.8rem);
-  font-weight: 700;
-  color: #1a3a28;
-  line-height: 1.2;
-  margin-bottom: 12px;
-}
-.hero h1 em {
-  font-style: italic;
-  color: #1D9E75;
-}
-.hero p {
-  font-size: clamp(.9rem, 3vw, 1rem);
-  color: #4a7a60;
-  font-weight: 500;
-  margin-bottom: 28px;
-}
-
-/* QUIZ NAV CIRCLES */
-.quiz-nav {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-.nav-btn {
-  font-family: 'Inter', sans-serif;
-  font-size: .85rem;
-  font-weight: 700;
-  padding: 10px 20px;
-  border: 2px solid #1D9E75;
-  border-radius: 50px;
-  background: white;
-  color: #1D9E75;
-  cursor: pointer;
-  transition: all .2s;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  white-space: nowrap;
-}
-.nav-btn.active {
-  background: #1D9E75;
-  color: white;
-}
+body { font-family: 'Inter', sans-serif; background: #f0faf5; color: #1a2e25; min-height: 100vh; padding-bottom: 60px; }
+.hero { background: linear-gradient(160deg, #e8f7f0 0%, #f5fdf9 100%); text-align: center; padding: 44px 24px 32px; border-bottom: 1px solid #c8e8d8; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 7vw, 2.8rem); font-weight: 700; color: #1a3a28; line-height: 1.2; margin-bottom: 12px; }
+.hero h1 em { font-style: italic; color: #1D9E75; }
+.hero p { font-size: clamp(.9rem, 3vw, 1rem); color: #4a7a60; font-weight: 500; margin-bottom: 28px; }
+.quiz-nav { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.nav-btn { font-family: 'Inter', sans-serif; font-size: .85rem; font-weight: 700; padding: 10px 20px; border: 2px solid #1D9E75; border-radius: 50px; background: white; color: #1D9E75; cursor: pointer; transition: all .2s; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+.nav-btn.active { background: #1D9E75; color: white; }
 .nav-btn:active { transform: scale(.97); }
-
-/* SECTION */
 .quiz-section { display: none; padding: 20px 16px 0; }
 .quiz-section.active { display: block; }
-
-.section-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.1rem, 4vw, 1.4rem);
-  font-weight: 700;
-  color: #1a3a28;
-  margin-bottom: 4px;
-}
-.section-sub {
-  font-size: .88rem;
-  color: #4a7a60;
-  font-weight: 500;
-  margin-bottom: 16px;
-}
-
-/* SCORE */
-.scorebar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 8px;
-  background: white;
-  border: 1.5px solid #c8e8d8;
-  border-radius: 14px;
-  padding: 12px 16px;
-  margin-bottom: 10px;
-}
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.1rem, 4vw, 1.4rem); font-weight: 700; color: #1a3a28; margin-bottom: 4px; }
+.section-sub { font-size: .88rem; color: #4a7a60; font-weight: 500; margin-bottom: 16px; }
+.scorebar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; background: white; border: 1.5px solid #c8e8d8; border-radius: 14px; padding: 12px 16px; margin-bottom: 10px; }
 .score-label { font-size: .88rem; font-weight: 700; color: #4a7a60; }
 .score-value { font-size: 1.4rem; font-weight: 800; color: #1D9E75; }
-.restart-btn {
-  font-family: 'Inter', sans-serif;
-  font-size: .82rem;
-  font-weight: 700;
-  padding: 8px 16px;
-  background: #e8f7f0;
-  color: #0F6E56;
-  border: 1.5px solid #c8e8d8;
-  border-radius: 50px;
-  cursor: pointer;
-}
+.restart-btn { font-family: 'Inter', sans-serif; font-size: .82rem; font-weight: 700; padding: 8px 16px; background: #e8f7f0; color: #0F6E56; border: 1.5px solid #c8e8d8; border-radius: 50px; cursor: pointer; }
 .restart-btn:active { background: #c8e8d8; }
-
-/* PROGRESS */
-.prog-wrap {
-  background: #c8e8d8;
-  border-radius: 50px;
-  height: 7px;
-  margin-bottom: 4px;
-  overflow: hidden;
-}
-.prog-fill {
-  height: 100%;
-  background: #1D9E75;
-  border-radius: 50px;
-  transition: width .4s ease;
-  width: 0%;
-}
-.prog-text {
-  text-align: center;
-  font-size: .78rem;
-  font-weight: 600;
-  color: #4a7a60;
-  margin-bottom: 16px;
-}
-
-/* CARD */
-.card {
-  background: white;
-  border: 1.5px solid #c8e8d8;
-  border-radius: 18px;
-  padding: 20px 16px;
-  margin-bottom: 14px;
-  animation: fadeUp .3s ease both;
-}
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.q-badge {
-  display: inline-block;
-  background: #e8f7f0;
-  color: #0F6E56;
-  font-size: .7rem;
-  font-weight: 700;
-  letter-spacing: .4px;
-  text-transform: uppercase;
-  padding: 3px 10px;
-  border-radius: 20px;
-  margin-bottom: 10px;
-}
-.q-text {
-  font-size: clamp(1rem, 3.8vw, 1.12rem);
-  font-weight: 700;
-  line-height: 1.6;
-  margin-bottom: 16px;
-  color: #1a2e25;
-}
-
-/* OPTIONS */
+.prog-wrap { background: #c8e8d8; border-radius: 50px; height: 7px; margin-bottom: 4px; overflow: hidden; }
+.prog-fill { height: 100%; background: #1D9E75; border-radius: 50px; transition: width .4s ease; width: 0%; }
+.prog-text { text-align: center; font-size: .78rem; font-weight: 600; color: #4a7a60; margin-bottom: 16px; }
+.card { background: white; border: 1.5px solid #c8e8d8; border-radius: 18px; padding: 20px 16px; margin-bottom: 14px; animation: fadeUp .3s ease both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+.q-badge { display: inline-block; background: #e8f7f0; color: #0F6E56; font-size: .7rem; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px; }
+.q-text { font-size: clamp(1rem, 3.8vw, 1.12rem); font-weight: 700; line-height: 1.6; margin-bottom: 16px; color: #1a2e25; }
 .options { display: flex; flex-direction: column; gap: 10px; }
-
-.opt-btn {
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(.92rem, 3.4vw, 1.02rem);
-  font-weight: 600;
-  text-align: left;
-  min-height: 52px;
-  padding: 12px 14px;
-  border: 1.5px solid #c8e8d8;
-  border-radius: 12px;
-  cursor: pointer;
-  background: white;
-  color: #1a2e25;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  line-height: 1.4;
-  transition: border-color .15s;
-  -webkit-tap-highlight-color: transparent;
-}
+.opt-btn { font-family: 'Inter', sans-serif; font-size: clamp(.92rem, 3.4vw, 1.02rem); font-weight: 600; text-align: left; min-height: 52px; padding: 12px 14px; border: 1.5px solid #c8e8d8; border-radius: 12px; cursor: pointer; background: white; color: #1a2e25; display: flex; align-items: center; gap: 12px; line-height: 1.4; transition: border-color .15s; -webkit-tap-highlight-color: transparent; }
 .opt-btn:active:not(:disabled) { background: #f0faf5; }
-
-.opt-letter {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: #f0faf5;
-  border: 1.5px solid #c8e8d8;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: .78rem;
-  font-weight: 800;
-  color: #4a7a60;
-  flex-shrink: 0;
-}
-
+.opt-letter { width: 30px; height: 30px; border-radius: 50%; background: #f0faf5; border: 1.5px solid #c8e8d8; display: flex; align-items: center; justify-content: center; font-size: .78rem; font-weight: 800; color: #4a7a60; flex-shrink: 0; }
 .opt-btn.correct { background: #e8f7f0; border-color: #1D9E75; color: #0F6E56; }
 .opt-btn.correct .opt-letter { background: #1D9E75; border-color: #1D9E75; color: white; }
-.opt-btn.wrong   { background: #FAECE7; border-color: #D85A30; color: #D85A30; }
-.opt-btn.wrong .opt-letter   { background: #D85A30; border-color: #D85A30; color: white; }
+.opt-btn.wrong { background: #FAECE7; border-color: #D85A30; color: #D85A30; }
+.opt-btn.wrong .opt-letter { background: #D85A30; border-color: #D85A30; color: white; }
 .opt-btn:disabled { cursor: default; }
-
-/* FEEDBACK */
 .feedback { display: none; margin-top: 12px; padding: 14px 16px; border-radius: 12px; font-size: clamp(.88rem, 3.2vw, .96rem); line-height: 1.65; }
 .fb-correct { display: block; background: #e8f7f0; border: 1.5px solid #1D9E75; color: #0F6E56; }
-.fb-wrong   { display: block; background: #FAECE7; border: 1.5px solid #D85A30; color: #9e3010; }
-.fb-label   { font-weight: 800; display: block; margin-bottom: 5px; font-size: 1rem; }
-
-footer {
-  text-align: center;
-  padding: 36px 20px 10px;
-  font-size: .82rem;
-  font-weight: 600;
-  color: #4a7a60;
-}
+.fb-wrong { display: block; background: #FAECE7; border: 1.5px solid #D85A30; color: #9e3010; }
+.fb-label { font-weight: 800; display: block; margin-bottom: 5px; font-size: 1rem; }
+footer { text-align: center; padding: 36px 20px 10px; font-size: .82rem; font-weight: 600; color: #4a7a60; }
 </style>
 </head>
 <body>
@@ -242,8 +56,8 @@ footer {
   <p>Built for Debbie — study together, one question at a time. 🤍</p>
   <div class="quiz-nav">
     <button class="nav-btn active" onclick="switchTab('q1', this)">📝 Quiz 1</button>
-    <!-- ADD MORE QUIZ BUTTONS HERE AS DEBBIE SENDS MORE CONCEPTS -->
-    <!-- <button class="nav-btn" onclick="switchTab('q2', this)">📝 Quiz 2</button> -->
+    <button class="nav-btn" onclick="switchTab('q2', this)">📝 Quiz 2</button>
+    <!-- ADD MORE QUIZ BUTTONS HERE -->
   </div>
 </div>
 
@@ -251,7 +65,6 @@ footer {
 <div id="q1" class="quiz-section active">
   <div class="section-title">Insurance Fundamentals</div>
   <div class="section-sub">Read the definition · Choose the correct term</div>
-
   <div class="scorebar">
     <span class="score-label">Score</span>
     <span class="score-value" id="s1">0 / 0</span>
@@ -262,120 +75,97 @@ footer {
   <div id="cards1"></div>
 </div>
 
+<!-- QUIZ 2 -->
+<div id="q2" class="quiz-section">
+  <div class="section-title">CA Code &amp; Ethics — Chapter 1</div>
+  <div class="section-sub">Read the definition · Choose the correct answer</div>
+  <div class="scorebar">
+    <span class="score-label">Score</span>
+    <span class="score-value" id="s2">0 / 0</span>
+    <button class="restart-btn" onclick="buildQ2()">↺ Restart</button>
+  </div>
+  <div class="prog-wrap"><div class="prog-fill" id="bar2"></div></div>
+  <div class="prog-text" id="prog2">0 of 0 answered</div>
+  <div id="cards2"></div>
+</div>
+
 <footer>Made for Debbie · You're going to pass that exam! 🎉</footer>
 
 <script>
-// ═══════════════════════════════════════════════════════════
-//  QUESTION BANK — ADD NEW QUESTIONS AT THE BOTTOM
-//  Fields:
-//    term    — correct answer shown to user
-//    def     — definition shown as the question
-//    wrong   — exactly 3 wrong choices
-//    explain — explanation shown after answering
-// ═══════════════════════════════════════════════════════════
-var QUESTIONS = [
-  {
-    term: "Occurrence",
-    def: "An event that results in an insured loss. Unlike an accident, the loss does NOT have to be sudden — it can result from continuous or repeated exposure causing bodily injury or property damage neither expected nor intended by the insured.",
-    wrong: ["Accident", "Incident", "Fortuitous Event"],
-    explain: "If someone breathes in dust at a factory every day for 10 years and gets sick, that's not a sudden accident — it built up slowly. That slow build-up that causes a covered loss is called an Occurrence."
-  },
-  {
-    term: "Risk Reduction",
-    def: "Taking steps to reduce the probability or severity of a possible loss — for example, installing alarms and sprinkler systems to reduce fire loss risk. One of the 4 major risk management techniques.",
-    wrong: ["Fire Loss Reduction", "Loss Prevention", "Hazard Reduction"],
-    explain: "Before a big storm, smart families board up their windows so less damage happens. That's Risk Reduction: taking smart steps ahead of time to make a loss less likely or less damaging if it does happen."
-  },
-  {
-    term: "Moral Hazard",
-    def: "A condition of morals or habits that increases the probability of loss from a peril — for example, someone who previously burned their own property to collect insurance.",
-    wrong: ["Peril Condition", "Intentional Hazard", "Morale Hazard"],
-    explain: "Imagine a kid who accidentally breaks his toys more often after learning his parents will always buy new ones. Moral Hazard is when someone's dishonest habits make losses more likely to happen intentionally."
-  },
-  {
-    term: "Peril",
-    def: "The cause of possible loss.",
-    wrong: ["Exposure", "Risk", "Hazard"],
-    explain: "If your house catches fire, what caused the damage? The fire. Fire is the Peril. A peril is always the actual thing that caused the loss — fire, flood, theft, windstorm."
-  },
-  {
-    term: "Speculative Risk",
-    def: "Uncertainty as to whether a gain OR loss will occur — such as a business that might make money or lose it. These types of risks are NOT insurable.",
-    wrong: ["Normal Risk", "Loss Risk", "Pure Risk"],
-    explain: "Starting a lemonade stand could make you money OR lose you money. That's Speculative Risk: two possible directions, win or lose. Insurance will never cover this because you might actually profit."
-  },
-  {
-    term: "Insurer",
-    def: "The party to an insurance arrangement who undertakes to indemnify for losses or provide benefits. Preferred over the terms 'carrier' or 'company' in statutory law.",
-    wrong: ["Owner", "Insured", "Carrier"],
-    explain: "Someone has to be the one who promises to pay when something goes wrong. That's the Insurer. In everyday life we call them the insurance company, but on the exam and in the law, the official word is always Insurer."
-  },
-  {
-    term: "Exposure",
-    def: "The state of being subject to the possibility of loss — measured by payroll, gate receipts, area, or other standards.",
-    wrong: ["Risk Factor", "Hazard", "Peril"],
-    explain: "If you stand outside in the rain without an umbrella, you're exposed to getting wet. In insurance, Exposure is how much of something is out in the rain — how many employees, how big the building, how many tickets sold."
-  },
-  {
-    term: "Law of Large Numbers",
-    def: "This law states: the larger the number of exposures considered, the more closely losses will match the underlying probability of loss — similar to how flipping a coin many times approaches 50/50.",
-    wrong: ["Actuary Law", "Probability Law", "Mortality Table"],
-    explain: "If you flip a coin 4 times, you might get heads every time. But flip it 10,000 times and you will land very close to 50% heads. That's the Law of Large Numbers — and it's how insurance companies know what to charge!"
-  },
-  {
-    term: "Accident",
-    def: "A fortuitous event — unforeseen and unintended.",
-    wrong: ["Occurrence", "Continuity", "Incident"],
-    explain: "Think of a kid on a bike who suddenly hits a pothole and falls. Nobody planned it, nobody wanted it — that surprise, unplanned event is exactly what an Accident means in insurance."
-  },
-  {
-    term: "Protection",
-    def: "This term is used interchangeably with 'coverage' to denote the insurance provided under a policy. It also indicates the existence of fire-fighting facilities in a 'protected' area.",
-    wrong: ["Conditions", "Restrictions", "Coverage Area"],
-    explain: "When your mom puts a raincoat on you before school, she's giving you protection. Insurance works the same way — it covers you from harm. That's why Protection and coverage mean the exact same thing in an insurance policy."
-  },
-  {
-    term: "Insurable Risk",
-    def: "A risk where the loss must be capable of being defined, accidental, large enough to cause hardship, part of a homogeneous group, not subject to catastrophic simultaneous loss, and both the cost and chance of loss must be calculable.",
-    wrong: ["Loss Risk", "Pure Risk", "Speculative Risk"],
-    explain: "Pure Risk is close — it means only loss or no loss can happen. But Pure Risk is just one type of risk. To actually be covered, it also has to meet all the other rules — which is what makes it an Insurable Risk."
-  },
-  {
-    term: "Hazard",
-    def: "A condition that increases the chance of loss. It is NOT the cause of loss itself — it makes a loss more likely or more severe when a peril occurs.",
-    wrong: ["Peril", "Occurrence", "Exposure"],
-    explain: "Storing gasoline near a furnace is a hazard. The fire (peril) causes the loss, but the gasoline storage (hazard) made it more likely to happen. A Hazard is a condition — not the cause."
-  },
-  {
-    term: "Pure Risk",
-    def: "A type of risk that involves ONLY the chance of loss — there is no possibility of financial gain. Insurance is designed to cover only this type of risk.",
-    wrong: ["Speculative Risk", "Moral Risk", "Normal Risk"],
-    explain: "Your house either burns down or it doesn't — you can't profit from it. That's Pure Risk: only loss is possible, never gain. This is exactly what insurance is designed to cover."
-  },
-  {
-    term: "Speculative Risk",
-    def: "All of the following are used to determine an insurable risk EXCEPT which one?",
-    wrong: ["Risk of loss must represent a financial hardship", "Cost of insurance must be affordable", "Loss must be calculable"],
-    explain: "Speculative Risk means you might win OR lose — like gambling or starting a business. Insurance is never allowed to cover that. It is actually illegal to insure speculative risks!"
-  },
-  {
-    term: "Losses that are catastrophic in nature",
-    def: "All of the following are characteristics of an ideally insurable loss exposure EXCEPT which one?",
-    wrong: ["Large number of similar exposure units", "Losses that are accidental", "Losses that are definite and measurable"],
-    explain: "Insurance works by spreading small losses across many people in a pool. But if ONE event wipes everybody out at the same time — like a massive earthquake destroying an entire city — there's no pool big enough to handle it. Catastrophic losses break the whole system."
-  }
+// ═══════════════════════════════════════════════
+// QUIZ 1 QUESTIONS
+// ═══════════════════════════════════════════════
+var Q1 = [
+  { term: "Occurrence", def: "An event that results in an insured loss. Unlike an accident, the loss does NOT have to be sudden — it can result from continuous or repeated exposure causing bodily injury or property damage neither expected nor intended by the insured.", wrong: ["Accident", "Incident", "Fortuitous Event"], explain: "If someone breathes in dust at a factory every day for 10 years and gets sick, that's not a sudden accident — it built up slowly. That slow build-up that causes a covered loss is called an Occurrence." },
+  { term: "Risk Reduction", def: "Taking steps to reduce the probability or severity of a possible loss — for example, installing alarms and sprinkler systems to reduce fire loss risk. One of the 4 major risk management techniques.", wrong: ["Fire Loss Reduction", "Loss Prevention", "Hazard Reduction"], explain: "Before a big storm, smart families board up their windows so less damage happens. That's Risk Reduction: taking smart steps ahead of time to make a loss less likely or less damaging if it does happen." },
+  { term: "Moral Hazard", def: "A condition of morals or habits that increases the probability of loss from a peril — for example, someone who previously burned their own property to collect insurance.", wrong: ["Peril Condition", "Intentional Hazard", "Morale Hazard"], explain: "Imagine a kid who accidentally breaks his toys more often after learning his parents will always buy new ones. Moral Hazard is when someone's dishonest habits make losses more likely to happen intentionally." },
+  { term: "Peril", def: "The cause of possible loss.", wrong: ["Exposure", "Risk", "Hazard"], explain: "If your house catches fire, what caused the damage? The fire. Fire is the Peril. A peril is always the actual thing that caused the loss — fire, flood, theft, windstorm." },
+  { term: "Speculative Risk", def: "Uncertainty as to whether a gain OR loss will occur — such as a business that might make money or lose it. These types of risks are NOT insurable.", wrong: ["Normal Risk", "Loss Risk", "Pure Risk"], explain: "Starting a lemonade stand could make you money OR lose you money. That's Speculative Risk: two possible directions, win or lose. Insurance will never cover this because you might actually profit." },
+  { term: "Insurer", def: "The party to an insurance arrangement who undertakes to indemnify for losses or provide benefits. Preferred over the terms carrier or company in statutory law.", wrong: ["Owner", "Insured", "Carrier"], explain: "Someone has to be the one who promises to pay when something goes wrong. That's the Insurer. In everyday life we call them the insurance company, but on the exam and in the law, the official word is always Insurer." },
+  { term: "Exposure", def: "The state of being subject to the possibility of loss — measured by payroll, gate receipts, area, or other standards.", wrong: ["Risk Factor", "Hazard", "Peril"], explain: "If you stand outside in the rain without an umbrella, you're exposed to getting wet. In insurance, Exposure is how much of something is out in the rain — how many employees, how big the building, how many tickets sold." },
+  { term: "Law of Large Numbers", def: "This law states: the larger the number of exposures considered, the more closely losses will match the underlying probability of loss — similar to how flipping a coin many times approaches 50/50.", wrong: ["Actuary Law", "Probability Law", "Mortality Table"], explain: "If you flip a coin 4 times, you might get heads every time. But flip it 10,000 times and you will land very close to 50% heads. That's the Law of Large Numbers — and it's how insurance companies know what to charge!" },
+  { term: "Accident", def: "A fortuitous event — unforeseen and unintended.", wrong: ["Occurrence", "Continuity", "Incident"], explain: "Think of a kid on a bike who suddenly hits a pothole and falls. Nobody planned it, nobody wanted it — that surprise, unplanned event is exactly what an Accident means in insurance." },
+  { term: "Protection", def: "This term is used interchangeably with coverage to denote the insurance provided under a policy. It also indicates the existence of fire-fighting facilities in a protected area.", wrong: ["Conditions", "Restrictions", "Coverage Area"], explain: "When your mom puts a raincoat on you before school, she's giving you protection. Insurance works the same way — it covers you from harm. That's why Protection and coverage mean the exact same thing in an insurance policy." },
+  { term: "Insurable Risk", def: "A risk where the loss must be capable of being defined, accidental, large enough to cause hardship, part of a homogeneous group, not subject to catastrophic simultaneous loss, and both the cost and chance of loss must be calculable.", wrong: ["Loss Risk", "Pure Risk", "Speculative Risk"], explain: "Think of it like a checklist. Pure Risk just means you can only lose, never gain. But Insurable Risk means it passed ALL the checkboxes: accidental, definite, causes hardship, part of a group, and the insurer can calculate it. Pure Risk is just one checkbox. Insurable Risk is all of them." },
+  { term: "Hazard", def: "A condition that increases the chance of loss. It is NOT the cause of loss itself — it makes a loss more likely or more severe when a peril occurs.", wrong: ["Peril", "Occurrence", "Exposure"], explain: "Storing gasoline near a furnace is a hazard. The fire (peril) causes the loss, but the gasoline storage (hazard) made it more likely to happen. A Hazard is a condition — not the cause." },
+  { term: "Pure Risk", def: "A type of risk that involves ONLY the chance of loss — there is no possibility of financial gain. Insurance is designed to cover only this type of risk.", wrong: ["Speculative Risk", "Moral Risk", "Normal Risk"], explain: "Your house either burns down or it doesn't — you can't profit from it. That's Pure Risk: only loss is possible, never gain. This is exactly what insurance is designed to cover." },
+  { term: "Speculative Risk", def: "All of the following are used to determine an insurable risk EXCEPT which one?", wrong: ["Risk of loss must represent a financial hardship", "Cost of insurance must be affordable", "Loss must be calculable"], explain: "Speculative Risk means you might win OR lose — like gambling or starting a business. Insurance is never allowed to cover that. It is actually illegal to insure speculative risks!" },
+  { term: "Losses that are catastrophic in nature", def: "All of the following are characteristics of an ideally insurable loss exposure EXCEPT which one?", wrong: ["Large number of similar exposure units", "Losses that are accidental", "Losses that are definite and measurable"], explain: "Insurance works by spreading small losses across many people in a pool. But if ONE event wipes everybody out at the same time — like a massive earthquake destroying an entire city — there's no pool big enough to handle it. Catastrophic losses break the whole system." }
 ];
 
-// ═══════════════════════════════════════════════════════════
-//  STATE
-// ═══════════════════════════════════════════════════════════
-var answered1 = 0;
-var correct1  = 0;
-var LETTERS   = ['A','B','C','D'];
+// ═══════════════════════════════════════════════
+// QUIZ 2 QUESTIONS — CA Code & Ethics Chapter 1
+// ═══════════════════════════════════════════════
+var Q2 = [
+  { term: "A summary of all claims filed with an insurer", def: "Bodereau refers to which of the following?", wrong: ["A type of reinsurance contract", "A method of underwriting", "A deductible applied to life insurance"], explain: "Bodereau is a record or summary of claims, often used by insurers to track loss history." },
+  { term: "Eliminating a particular risk entirely", def: "Avoidance in risk management means:", wrong: ["Transferring risk to another party", "Reducing the probability of a loss", "Retaining the risk"], explain: "Avoidance means not engaging in the activity that creates risk in the first place. For example, not buying a boat to avoid the risk of maritime accidents." },
+  { term: "Optional coverage negotiated on a case-by-case basis", def: "Facultative reinsurance is:", wrong: ["Automatic coverage for all policies in a category", "Required by law for all insurers", "A type of deductible"], explain: "Facultative reinsurance is arranged individually for specific policies. The reinsurer can choose to accept or reject each risk — it is optional, not automatic." },
+  { term: "Reinsurance covering a group or category of policies automatically", def: "Treaty reinsurance is best described as:", wrong: ["Reinsurance negotiated individually for each policy", "A legal requirement in California", "Reinsurance that avoids moral hazard"], explain: "Treaty reinsurance covers all policies in a defined class automatically, without individual negotiation. The reinsurer agrees in advance to accept all risks that fit the treaty." },
+  { term: "Protect insurers from large losses", def: "Reinsurance primarily serves to:", wrong: ["Increase policyholder premiums", "Eliminate deductibles", "Classify risks"], explain: "Reinsurance allows insurers to spread or transfer large risks to another insurer. This protects them from paying out enormous claims that could threaten their financial stability." },
+  { term: "Reduce the insurer's exposure to small losses", def: "Deductibles in insurance are used to:", wrong: ["Encourage higher-risk behavior", "Transfer all risk to the insurer", "Avoid underwriting entirely"], explain: "Deductibles make the insured responsible for small losses, reducing administrative costs and discouraging moral hazard. The insurer only pays once the deductible is met." },
+  { term: "After a loss occurs to assess coverage", def: "Post-claim underwriting occurs:", wrong: ["Before issuing the policy", "During policy renewal", "Only for life insurance policies"], explain: "Post-claim underwriting evaluates the risk after the fact, often to identify misrepresentation. It is controversial because the insured may not know they were uninsurable until they file a claim." },
+  { term: "To accept only acceptable risks before issuing a policy", def: "The goal of preselection in underwriting is:", wrong: ["To evaluate a claim after a loss", "To calculate the premium for an existing policy", "To spread risk among reinsurers"], explain: "Preselection helps insurers identify risks they are willing to insure before the policy is issued. It is the agent's first review of the applicant." },
+  { term: "Company underwriters review and rate the applicant selected by the agent before issuing the policy", def: "Post-selection in underwriting means:", wrong: ["Assessing risk before the agent preselects the applicant", "Evaluating claims after a loss occurs", "Automatically issuing coverage without review"], explain: "Post-selection is the underwriter's evaluation of the applicant after the agent has preselected, ensuring proper rating and acceptance. It happens before policy issuance, not after a claim." },
+  { term: "Sorting risks into categories based on their potential losses", def: "Classifying risks involves:", wrong: ["Determining the premium for all policyholders", "Avoiding all types of losses", "Reducing deductibles"], explain: "Classifying risks helps underwriters set appropriate premiums. Risks in the same category have similar loss potential and are charged similar rates." },
+  { term: "Insurance agents who interact with applicants", def: "Field underwriting is conducted by:", wrong: ["Company actuaries only", "The California Department of Insurance", "Reinsurers"], explain: "Field underwriting is done at the point of sale by agents. The agent is the insurer's eyes and ears — they gather information and make initial assessments of the applicant's risk." },
+  { term: "Risk assessment performed by the insurance company itself", def: "Company underwriting refers to:", wrong: ["Risk sharing among policyholders", "Assessing claims after losses", "Transferring all risk"], explain: "Company underwriting is the internal evaluation of risk by the insurer. After the agent submits an application, company underwriters review and decide whether to issue, modify, or decline the policy." },
+  { term: "Evaluating and classifying applicants for insurance coverage", def: "Underwriting is best defined as:", wrong: ["The process of transferring risk", "Filing claims with insurers", "Paying losses to insureds"], explain: "Underwriting is the process of deciding who is insurable and at what rate. It protects the insurance pool by making sure only acceptable risks are covered." },
+  { term: "Distributing risk among multiple parties", def: "Risk sharing means:", wrong: ["Eliminating all risk entirely", "Paying claims only for catastrophic losses", "Avoiding moral hazard"], explain: "Risk sharing spreads the financial burden of losses. When many people pay premiums, the cost of any one person's loss is shared across the whole group." },
+  { term: "The policyholder transferring financial consequences of risk to the insurer", def: "Risk transfer is:", wrong: ["Reducing risk through safety measures", "Retaining risk intentionally", "Avoiding accidental losses"], explain: "Risk transfer occurs when an insured buys insurance. The financial consequences of a potential loss are transferred from the policyholder to the insurer in exchange for a premium." },
+  { term: "Paying for losses out-of-pocket rather than transferring them", def: "Risk retention is:", wrong: ["Sharing risk among multiple insurers", "Eliminating all risks entirely", "Purchasing facultative reinsurance"], explain: "Retention is when the insured assumes financial responsibility for risk. Self-insurance and high deductibles are examples of risk retention." },
+  { term: "Lowering the probability or severity of a loss", def: "Risk reduction involves:", wrong: ["Transferring risk to a reinsurer", "Avoiding underwriting entirely", "Paying claims only after catastrophic events"], explain: "Risk reduction involves actions like safety measures or maintenance. It does not eliminate risk — it makes losses less likely or less damaging when they occur." },
+  { term: "Identifying, analyzing, and controlling risk exposures", def: "Management of risk is:", wrong: ["Avoiding all insurable events", "Automatically issuing all policies", "Only sharing risk with other companies"], explain: "Risk management is a structured approach to handling potential losses. It involves four steps: identify the risk, analyze it, control it, and finance it." },
+  { term: "Risk is distributed among many insureds to reduce potential loss", def: "Spread of risk occurs when:", wrong: ["An insurer avoids high-risk clients", "Policies are issued without underwriting", "All deductibles are eliminated"], explain: "Spread of risk is fundamental to how insurance works. The more people in the pool, the more stable and predictable the losses become for the insurer." },
+  { term: "Higher-risk applicants seeking insurance disproportionately, leading to potential loss for insurers", def: "Adverse selection refers to:", wrong: ["Accepting only low-risk applicants", "Risk retention by the insurer", "Deductibles applied to all losses"], explain: "Adverse selection occurs when riskier people are more likely to buy coverage. This can destabilize an insurance pool if not managed through proper underwriting." },
+  { term: "Assess the true risk of an applicant accurately", def: "Obtaining reliable information during underwriting is necessary to:", wrong: ["Avoid paying claims", "Increase premiums arbitrarily", "Reduce moral hazard only"], explain: "Reliable information ensures correct underwriting decisions. If an insurer doesn't know the true risk, they may charge too little — or insure someone they shouldn't." },
+  { term: "Payment to restore the insured to the same financial position as before a loss", def: "Indemnity means:", wrong: ["Punishment for negligence", "Transfer of risk to a reinsurer", "Avoiding all losses"], explain: "Indemnity compensates for financial loss without allowing profit. The insured should be restored to where they were before the loss — not better, not worse." },
+  { term: "A person stands to suffer financial loss from damage to property or life", def: "Insurable interest exists when:", wrong: ["A person would financially benefit from the occurrence of a loss", "Insurance is purchased without risk", "Moral hazard is present"], explain: "Insurable interest prevents wagering on unrelated losses. You must have something to lose — a financial stake — in order to insure it. This is why you can insure your own home but not your neighbor's." },
+  { term: "A loss-causing event that is uncertain and measurable", def: "An insurable event is:", wrong: ["A certain or predictable occurrence", "Only natural disasters", "Always intentional"], explain: "Insurable events must be accidental and measurable. If the event is certain to happen, it's not insurable. If it can't be measured in dollars, it can't be compensated." },
+  { term: "Outside the control of the insured", def: "For a loss to be due to chance, it must be:", wrong: ["Intentional", "Certain to occur", "Predicted accurately by the insurer"], explain: "Losses due to chance are unpredictable and not intentional. If the insured controls whether the loss happens, it is not a chance event — and insurance won't cover it." },
+  { term: "Unexpected and unintended events", def: "Accidental losses are:", wrong: ["Expected and planned for", "Covered only by reinsurance", "Always catastrophic"], explain: "Accidental losses are the foundation of insurable risk. They must be unexpected and unintended. Planned or predictable losses are not insurable because they are not accidents." },
+  { term: "Any financial detriment that is covered by insurance", def: "Loss refers to:", wrong: ["Only moral hazards", "Transfer of risk", "Avoidable expenses"], explain: "Loss is the actual reduction in value or financial harm that triggers an insurance claim. It must be a covered loss under the policy terms." },
+  { term: "The potential for a financial loss", def: "Loss exposure is:", wrong: ["A type of deductible", "Always a pure risk", "Only related to life insurance"], explain: "Loss exposure is the possibility that a loss may occur. Every business and person has loss exposures — the goal of risk management is to identify and address them." },
+  { term: "Be measurable, fortuitous, and not catastrophic to the insurer", def: "An ideally insurable risk must:", wrong: ["Be speculative and uncertain", "Always involve human life", "Be shared only through facultative reinsurance"], explain: "Ideally insurable risks must be definable and manageable. They must be accidental, measurable, cause real hardship, and not be so large that they could overwhelm the insurer." },
+  { term: "The larger the number of similar exposures, the more predictable the losses", def: "The law of large numbers states that:", wrong: ["Losses will always be catastrophic", "Premiums should be minimized for all policyholders", "Deductibles should be eliminated"], explain: "The law of large numbers allows insurers to estimate losses accurately. The more similar risks in the pool, the closer actual losses will come to the predicted probability." },
+  { term: "Carelessness or indifference to loss because one is insured", def: "Morale hazards involve:", wrong: ["Intentional acts to cause loss", "Physical conditions increasing risk", "Risk transfer to another party"], explain: "Morale hazards result from insureds being less careful because they are protected. Example: not locking your car because it's insured. It's carelessness, not dishonesty." },
+  { term: "A person intentionally causes a loss for financial gain", def: "Moral hazards occur when:", wrong: ["Losses happen due to accident", "Risk is spread among policyholders", "Deductibles are applied"], explain: "Moral hazards involve dishonesty or fraud. Example: deliberately burning down a building to collect insurance money. Unlike morale hazard (carelessness), moral hazard is intentional." },
+  { term: "Tangible conditions that increase the likelihood of loss", def: "Physical hazards are:", wrong: ["Carelessness of the insured", "Moral failings of the insured", "Uninsurable risks"], explain: "Physical hazards are concrete, such as slippery floors or defective wiring. They are tangible conditions that make a loss more likely — as opposed to behavioral hazards like moral or morale hazard." },
+  { term: "Factors that increase the probability or severity of a loss", def: "Hazards in general are:", wrong: ["Always preventable", "Only relevant to property insurance", "Avoidable through reinsurance"], explain: "Hazards make losses more likely or more severe. They are not the cause of loss — that's a peril. A hazard is a condition that increases the chance a peril will result in a loss." },
+  { term: "Causes of loss such as fire, theft, or illness", def: "Perils are:", wrong: ["Methods of risk reduction", "Legal obligations of the insurer", "Deductibles applied to claims"], explain: "Perils are the actual events that can cause a loss. Fire, theft, windstorm, and illness are all perils. Insurance policies either name the perils they cover or cover all perils except those excluded." },
+  { term: "A risk with the possibility of either gain or loss", def: "Speculative risk is:", wrong: ["Always covered by insurance", "Purely accidental and uninsurable", "Avoided through reinsurance"], explain: "Speculative risk is not insurable because it involves potential profit. Gambling and investing in stocks are examples. Insurance only covers pure risk — where there is only the chance of loss, never gain." },
+  { term: "A risk with only the possibility of loss or no loss", def: "Pure risk is:", wrong: ["A risk that can generate profit", "Always speculative", "Only applicable to health insurance"], explain: "Pure risks are insurable since they only involve potential loss. Your house burning down is a pure risk — you either lose or you don't. There's no way to profit from it." },
+  { term: "The uncertainty of loss", def: "Risk is best defined as:", wrong: ["Guaranteed loss", "Only physical hazards", "Only perils"], explain: "Risk is the chance that an undesirable outcome will occur. It is uncertainty — not certainty. If a loss is certain, it's not a risk. Insurance exists to manage this uncertainty." },
+  { term: "A method of risk transfer to protect against financial loss", def: "Insurance is:", wrong: ["A guarantee of profit", "Always optional", "A method to eliminate all risks"], explain: "Insurance transfers financial risk from the insured to the insurer. It does not eliminate risk — it just shifts the financial consequences of a loss to the insurer in exchange for a premium." },
+  { term: "The party providing insurance coverage", def: "The insurer is:", wrong: ["The person receiving coverage", "Always a reinsurer", "The person filing the claim"], explain: "The insurer is the company or organization offering insurance. They collect premiums and promise to pay covered losses. On the exam, insurer is always preferred over carrier or company." },
+  { term: "The individual or entity protected under an insurance policy", def: "The insured is:", wrong: ["The insurance company", "Only liable for moral hazards", "Only responsible for deductibles"], explain: "The insured receives the protection offered by the insurance contract. They pay premiums and in return, the insurer agrees to cover their covered losses." },
+  { term: "Identification, analysis, control, and financing of risks", def: "Risk management involves which of the following steps?", wrong: ["Filing claims after losses", "Eliminating all insurance coverage", "Only transferring risk to reinsurers"], explain: "Effective risk management involves systematic handling of potential losses. The four steps are: identify the risk, analyze it, control it, and decide how to finance it — through insurance, retention, or other methods." }
+];
 
-// ═══════════════════════════════════════════════════════════
-//  SHUFFLE
-// ═══════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════
+// SHARED ENGINE
+// ═══════════════════════════════════════════════
+var LETTERS = ['A','B','C','D'];
+
 function shuffle(arr) {
   var a = arr.slice();
   for (var i = a.length - 1; i > 0; i--) {
@@ -385,17 +175,17 @@ function shuffle(arr) {
   return a;
 }
 
-// ═══════════════════════════════════════════════════════════
-//  BUILD QUIZ 1
-// ═══════════════════════════════════════════════════════════
-function buildQ1() {
-  answered1 = 0;
-  correct1  = 0;
-  updateUI();
+function buildQuiz(questions, wrapId, scoreId, barId, progId, answeredRef, correctRef) {
+  answeredRef.v = 0;
+  correctRef.v = 0;
+  var t = questions.length;
+  document.getElementById(scoreId).textContent = '0 / ' + t;
+  document.getElementById(barId).style.width = '0%';
+  document.getElementById(progId).textContent = '0 of ' + t + ' answered';
 
-  var wrap = document.getElementById('cards1');
+  var wrap = document.getElementById(wrapId);
   wrap.innerHTML = '';
-  var shuffledQ = shuffle(QUESTIONS);
+  var shuffledQ = shuffle(questions);
 
   for (var i = 0; i < shuffledQ.length; i++) {
     (function(q, qIndex) {
@@ -406,78 +196,69 @@ function buildQ1() {
 
       var optHTML = '';
       for (var k = 0; k < opts.length; k++) {
-        optHTML += '<button class="opt-btn" data-answer="' + encodeURIComponent(opts[k]) + '">' +
+        optHTML += '<button class="opt-btn" data-val="' + encodeURIComponent(opts[k]) + '">' +
           '<span class="opt-letter">' + LETTERS[k] + '</span>' +
-          '<span>' + opts[k] + '</span>' +
-          '</button>';
+          '<span>' + opts[k] + '</span></button>';
       }
 
       card.innerHTML =
-        '<div class="q-badge">Question ' + (qIndex + 1) + ' of ' + QUESTIONS.length + '</div>' +
+        '<div class="q-badge">Question ' + (qIndex + 1) + ' of ' + t + '</div>' +
         '<div class="q-text">' + q.def + '</div>' +
         '<div class="options">' + optHTML + '</div>' +
         '<div class="feedback"></div>';
 
       wrap.appendChild(card);
 
-      var buttons = card.querySelectorAll('.opt-btn');
-      for (var b = 0; b < buttons.length; b++) {
-        buttons[b].addEventListener('click', (function(btn, correctTerm, explanation) {
+      var btns = card.querySelectorAll('.opt-btn');
+      for (var b = 0; b < btns.length; b++) {
+        btns[b].addEventListener('click', (function(btn, correctTerm, explanation, sId, bId, pId, aRef, cRef) {
           return function() {
-            var selected = decodeURIComponent(btn.getAttribute('data-answer'));
-            var allBtns = card.querySelectorAll('.opt-btn');
-            for (var x = 0; x < allBtns.length; x++) {
-              allBtns[x].disabled = true;
-              if (decodeURIComponent(allBtns[x].getAttribute('data-answer')) === correctTerm) {
-                allBtns[x].classList.add('correct');
-              }
+            var selected = decodeURIComponent(btn.getAttribute('data-val'));
+            var all = card.querySelectorAll('.opt-btn');
+            for (var x = 0; x < all.length; x++) {
+              all[x].disabled = true;
+              if (decodeURIComponent(all[x].getAttribute('data-val')) === correctTerm) all[x].classList.add('correct');
             }
             var fb = card.querySelector('.feedback');
             if (selected === correctTerm) {
               btn.classList.add('correct');
               fb.className = 'feedback fb-correct';
               fb.innerHTML = '<span class="fb-label">Correct! ✓</span>' + explanation;
-              correct1++;
+              cRef.v++;
             } else {
               btn.classList.add('wrong');
               fb.className = 'feedback fb-wrong';
               fb.innerHTML = '<span class="fb-label">Not quite! The answer is: ' + correctTerm + '</span>' + explanation;
             }
-            answered1++;
-            updateUI();
+            aRef.v++;
+            var total = questions.length;
+            document.getElementById(sId).textContent = cRef.v + ' / ' + total;
+            document.getElementById(bId).style.width = ((aRef.v / total) * 100) + '%';
+            document.getElementById(pId).textContent = aRef.v + ' of ' + total + ' answered';
           };
-        })(buttons[b], q.term, q.explain));
+        })(btns[b], q.term, q.explain, scoreId, barId, progId, answeredRef, correctRef));
       }
     })(shuffledQ[i], i);
   }
 }
 
-// ═══════════════════════════════════════════════════════════
-//  UPDATE SCORE UI
-// ═══════════════════════════════════════════════════════════
-function updateUI() {
-  var t = QUESTIONS.length;
-  document.getElementById('s1').textContent = correct1 + ' / ' + t;
-  document.getElementById('bar1').style.width = ((answered1 / t) * 100) + '%';
-  document.getElementById('prog1').textContent = answered1 + ' of ' + t + ' answered';
-}
+var a1 = {v:0}, c1 = {v:0};
+var a2 = {v:0}, c2 = {v:0};
 
-// ═══════════════════════════════════════════════════════════
-//  TAB SWITCH
-// ═══════════════════════════════════════════════════════════
+function buildQ1() { buildQuiz(Q1, 'cards1', 's1', 'bar1', 'prog1', a1, c1); }
+function buildQ2() { buildQuiz(Q2, 'cards2', 's2', 'bar2', 'prog2', a2, c2); }
+
 function switchTab(id, btn) {
-  var sections = document.querySelectorAll('.quiz-section');
-  for (var i = 0; i < sections.length; i++) sections[i].classList.remove('active');
-  var navBtns = document.querySelectorAll('.nav-btn');
-  for (var j = 0; j < navBtns.length; j++) navBtns[j].classList.remove('active');
+  var secs = document.querySelectorAll('.quiz-section');
+  for (var i = 0; i < secs.length; i++) secs[i].classList.remove('active');
+  var navs = document.querySelectorAll('.nav-btn');
+  for (var j = 0; j < navs.length; j++) navs[j].classList.remove('active');
   document.getElementById(id).classList.add('active');
   btn.classList.add('active');
 }
 
-// ═══════════════════════════════════════════════════════════
-//  INIT
-// ═══════════════════════════════════════════════════════════
 buildQ1();
+buildQ2();
 </script>
 </body>
 </html>
