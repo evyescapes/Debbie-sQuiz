@@ -3,641 +3,481 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Debbie's Insurance Study Guide 🌸</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<title>Debbie's Insurance Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  /* ── TOKENS ───────────────────────────────────────────── */
-  :root {
-    --pink:     #FFD6E0;
-    --yellow:   #FFF4CC;
-    --mint:     #D4F5E9;
-    --lavender: #E8DAFF;
-    --peach:    #FFE5CC;
-    --sky:      #D6EEFF;
-    --dark:     #3D2C4E;
-    --correct:  #4CB87A;
-    --wrong:    #D96060;
-    --btn:      #B497D6;
-    --btn-h:    #9B7DC4;
-    --bg:       linear-gradient(160deg,#FDE8F0 0%,#EEE4FF 50%,#D6F0FF 100%);
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
 
-    /* SPACING — generous for thumbs */
-    --tap: 52px;      /* minimum tap target height */
-    --r:   20px;      /* card border-radius */
-    --gap: 16px;
-  }
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f0faf5;
+  color: #1a2e25;
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
 
-  /* ── RESET ────────────────────────────────────────────── */
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { -webkit-text-size-adjust: 100%; }
+/* HEADER */
+.hero {
+  background: linear-gradient(160deg, #e8f7f0 0%, #f5fdf9 100%);
+  text-align: center;
+  padding: 44px 24px 32px;
+  border-bottom: 1px solid #c8e8d8;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.9rem, 7vw, 2.8rem);
+  font-weight: 700;
+  color: #1a3a28;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: #1D9E75;
+}
+.hero p {
+  font-size: clamp(.9rem, 3vw, 1rem);
+  color: #4a7a60;
+  font-weight: 500;
+  margin-bottom: 28px;
+}
 
-  body {
-    font-family: 'Nunito', sans-serif;
-    background: var(--bg);
-    background-attachment: fixed;
-    min-height: 100vh;
-    color: var(--dark);
-    padding: 0 0 60px;
-    font-size: 18px;       /* base larger for readability */
-    line-height: 1.5;
-  }
+/* QUIZ NAV CIRCLES */
+.quiz-nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.nav-btn {
+  font-family: 'Inter', sans-serif;
+  font-size: .85rem;
+  font-weight: 700;
+  padding: 10px 20px;
+  border: 2px solid #1D9E75;
+  border-radius: 50px;
+  background: white;
+  color: #1D9E75;
+  cursor: pointer;
+  transition: all .2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.nav-btn.active {
+  background: #1D9E75;
+  color: white;
+}
+.nav-btn:active { transform: scale(.97); }
 
-  /* ── HEADER ───────────────────────────────────────────── */
-  header {
-    text-align: center;
-    padding: 36px 20px 24px;
-  }
-  header h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 7vw, 2.8rem);
-    color: var(--dark);
-    margin-bottom: 6px;
-  }
-  header p {
-    font-size: clamp(1rem, 4vw, 1.15rem);
-    color: #7A5C96;
-    font-weight: 700;
-  }
+/* SECTION */
+.quiz-section { display: none; padding: 20px 16px 0; }
+.quiz-section.active { display: block; }
 
-  /* ── TABS ─────────────────────────────────────────────── */
-  .tabs {
-    display: flex;
-    gap: 10px;
-    padding: 0 16px 24px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .tab-btn {
-    font-family: 'Nunito', sans-serif;
-    font-size: clamp(1rem, 4vw, 1.1rem);
-    font-weight: 800;
-    min-height: var(--tap);
-    padding: 0 24px;
-    border: 3px solid var(--dark);
-    border-radius: 50px;
-    cursor: pointer;
-    background: white;
-    color: var(--dark);
-    transition: all .2s;
-    flex: 1 1 180px;
-    max-width: 280px;
-  }
-  .tab-btn.active {
-    background: var(--btn);
-    color: white;
-    box-shadow: 0 6px 18px rgba(180,150,214,.4);
-  }
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.1rem, 4vw, 1.4rem);
+  font-weight: 700;
+  color: #1a3a28;
+  margin-bottom: 4px;
+}
+.section-sub {
+  font-size: .88rem;
+  color: #4a7a60;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
 
-  /* ── SECTION ──────────────────────────────────────────── */
-  .quiz-section { display: none; }
-  .quiz-section.active { display: block; }
+/* SCORE */
+.scorebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  background: white;
+  border: 1.5px solid #c8e8d8;
+  border-radius: 14px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+}
+.score-label { font-size: .88rem; font-weight: 700; color: #4a7a60; }
+.score-value { font-size: 1.4rem; font-weight: 800; color: #1D9E75; }
+.restart-btn {
+  font-family: 'Inter', sans-serif;
+  font-size: .82rem;
+  font-weight: 700;
+  padding: 8px 16px;
+  background: #e8f7f0;
+  color: #0F6E56;
+  border: 1.5px solid #c8e8d8;
+  border-radius: 50px;
+  cursor: pointer;
+}
+.restart-btn:active { background: #c8e8d8; }
 
-  .section-header {
-    text-align: center;
-    padding: 0 20px 20px;
-  }
-  .section-header h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.3rem, 5vw, 1.8rem);
-    margin-bottom: 4px;
-  }
-  .section-header p {
-    font-size: 1rem;
-    color: #7A5C96;
-    font-weight: 600;
-  }
+/* PROGRESS */
+.prog-wrap {
+  background: #c8e8d8;
+  border-radius: 50px;
+  height: 7px;
+  margin-bottom: 4px;
+  overflow: hidden;
+}
+.prog-fill {
+  height: 100%;
+  background: #1D9E75;
+  border-radius: 50px;
+  transition: width .4s ease;
+  width: 0%;
+}
+.prog-text {
+  text-align: center;
+  font-size: .78rem;
+  font-weight: 600;
+  color: #4a7a60;
+  margin-bottom: 16px;
+}
 
-  /* ── SCORE BAR ────────────────────────────────────────── */
-  .scorebar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 0 16px 14px;
-    background: white;
-    border: 3px solid var(--dark);
-    border-radius: var(--r);
-    padding: 14px 18px;
-    box-shadow: 4px 4px 0 rgba(61,44,78,.1);
-  }
-  .scorebar-label { font-size: 1rem; font-weight: 700; color: #7A5C96; }
-  .scorebar-value { font-size: 1.5rem; font-weight: 900; }
-  .reset-btn {
-    font-family: 'Nunito', sans-serif;
-    font-size: .95rem;
-    font-weight: 800;
-    min-height: 44px;
-    padding: 0 18px;
-    background: var(--peach);
-    border: 2.5px solid var(--dark);
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all .2s;
-    white-space: nowrap;
-  }
-  .reset-btn:active { background: #FFD1A0; transform: scale(.97); }
+/* CARD */
+.card {
+  background: white;
+  border: 1.5px solid #c8e8d8;
+  border-radius: 18px;
+  padding: 20px 16px;
+  margin-bottom: 14px;
+  animation: fadeUp .3s ease both;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
-  /* ── PROGRESS ─────────────────────────────────────────── */
-  .progress-wrap {
-    margin: 0 16px 6px;
-    background: white;
-    border-radius: 50px;
-    height: 16px;
-    border: 2px solid var(--dark);
-    overflow: hidden;
-  }
-  .progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--btn), #E88FC5);
-    border-radius: 50px;
-    transition: width .4s ease;
-    width: 0%;
-  }
-  .progress-text {
-    text-align: center;
-    font-size: .9rem;
-    font-weight: 700;
-    color: #9A7AB8;
-    margin: 4px 0 18px;
-  }
+.q-badge {
+  display: inline-block;
+  background: #e8f7f0;
+  color: #0F6E56;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+.q-text {
+  font-size: clamp(1rem, 3.8vw, 1.12rem);
+  font-weight: 700;
+  line-height: 1.6;
+  margin-bottom: 16px;
+  color: #1a2e25;
+}
 
-  /* ── CARD ─────────────────────────────────────────────── */
-  .card {
-    margin: 0 16px var(--gap);
-    border-radius: var(--r);
-    border: 3px solid var(--dark);
-    padding: 22px 18px;
-    box-shadow: 5px 5px 0 rgba(61,44,78,.12);
-    animation: fadeUp .3s ease both;
-  }
-  @keyframes fadeUp {
-    from { opacity:0; transform:translateY(14px); }
-    to   { opacity:1; transform:translateY(0); }
-  }
-  /* Rotating card backgrounds */
-  .card:nth-child(5n+1) { background: var(--pink); }
-  .card:nth-child(5n+2) { background: var(--yellow); }
-  .card:nth-child(5n+3) { background: var(--mint); }
-  .card:nth-child(5n+4) { background: var(--lavender); }
-  .card:nth-child(5n+5) { background: var(--peach); }
+/* OPTIONS */
+.options { display: flex; flex-direction: column; gap: 10px; }
 
-  .q-badge {
-    display: inline-block;
-    background: var(--dark);
-    color: white;
-    font-size: .78rem;
-    font-weight: 800;
-    padding: 3px 12px;
-    border-radius: 20px;
-    margin-bottom: 10px;
-    letter-spacing: .4px;
-  }
-  .card-q {
-    font-size: clamp(1.05rem, 4vw, 1.2rem);
-    font-weight: 700;
-    line-height: 1.6;
-    margin-bottom: 10px;
-  }
+.opt-btn {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(.92rem, 3.4vw, 1.02rem);
+  font-weight: 600;
+  text-align: left;
+  min-height: 52px;
+  padding: 12px 14px;
+  border: 1.5px solid #c8e8d8;
+  border-radius: 12px;
+  cursor: pointer;
+  background: white;
+  color: #1a2e25;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  line-height: 1.4;
+  transition: border-color .15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.opt-btn:active:not(:disabled) { background: #f0faf5; }
 
+.opt-letter {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #f0faf5;
+  border: 1.5px solid #c8e8d8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .78rem;
+  font-weight: 800;
+  color: #4a7a60;
+  flex-shrink: 0;
+}
 
-  /* ── OPTIONS (Quiz 1) ─────────────────────────────────── */
-  .options { display: flex; flex-direction: column; gap: 10px; }
-  .opt-btn {
-    font-family: 'Nunito', sans-serif;
-    font-size: clamp(1rem, 4vw, 1.1rem);
-    font-weight: 700;
-    text-align: left;
-    min-height: var(--tap);
-    padding: 12px 16px;
-    border: 2.5px solid var(--dark);
-    border-radius: 14px;
-    cursor: pointer;
-    background: white;
-    transition: all .15s;
-    line-height: 1.4;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .opt-btn:active:not(:disabled) { transform: scale(.98); }
-  .opt-btn.correct  { background: #C5F0D8; border-color: var(--correct); color: #1A5C3A; }
-  .opt-btn.wrong    { background: #FFD5D5; border-color: var(--wrong);   color: #7A1A1A; }
-  .opt-btn:disabled { cursor: default; }
+.opt-btn.correct { background: #e8f7f0; border-color: #1D9E75; color: #0F6E56; }
+.opt-btn.correct .opt-letter { background: #1D9E75; border-color: #1D9E75; color: white; }
+.opt-btn.wrong   { background: #FAECE7; border-color: #D85A30; color: #D85A30; }
+.opt-btn.wrong .opt-letter   { background: #D85A30; border-color: #D85A30; color: white; }
+.opt-btn:disabled { cursor: default; }
 
-  /* ── FILL INPUT (Quiz 2) ──────────────────────────────── */
-  .fill-wrap { display: flex; flex-direction: column; gap: 12px; }
-  .fill-input {
-    font-family: 'Nunito', sans-serif;
-    font-size: clamp(1.05rem, 4vw, 1.15rem);
-    font-weight: 700;
-    min-height: var(--tap);
-    padding: 12px 16px;
-    border: 2.5px solid var(--dark);
-    border-radius: 14px;
-    outline: none;
-    width: 100%;
-    background: white;
-    transition: border-color .2s;
-    /* iOS prevents zoom on focus when font-size >= 16px */
-    font-size: 16px;
-  }
-  .fill-input:focus { border-color: var(--btn); box-shadow: 0 0 0 3px rgba(180,150,214,.22); }
-  .fill-input.correct { background: #C5F0D8; border-color: var(--correct); }
-  .fill-input.wrong   { background: #FFD5D5; border-color: var(--wrong); }
+/* FEEDBACK */
+.feedback { display: none; margin-top: 12px; padding: 14px 16px; border-radius: 12px; font-size: clamp(.88rem, 3.2vw, .96rem); line-height: 1.65; }
+.fb-correct { display: block; background: #e8f7f0; border: 1.5px solid #1D9E75; color: #0F6E56; }
+.fb-wrong   { display: block; background: #FAECE7; border: 1.5px solid #D85A30; color: #9e3010; }
+.fb-label   { font-weight: 800; display: block; margin-bottom: 5px; font-size: 1rem; }
 
-  .check-btn {
-    font-family: 'Nunito', sans-serif;
-    font-size: 1.05rem;
-    font-weight: 800;
-    min-height: var(--tap);
-    padding: 0 26px;
-    background: var(--btn);
-    color: white;
-    border: 2.5px solid var(--dark);
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all .2s;
-    align-self: flex-start;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .check-btn:active { background: var(--btn-h); transform: scale(.97); }
-  .check-btn:disabled { opacity: .45; cursor: default; transform: none; }
-
-  /* ── FEEDBACK ─────────────────────────────────────────── */
-  .feedback {
-    display: none;
-    margin-top: 12px;
-    font-size: 1rem;
-    font-weight: 700;
-    padding: 12px 16px;
-    border-radius: 14px;
-    line-height: 1.5;
-  }
-  .fb-correct { display: block; background: #DDFAED; color: #1A5C3A; border: 2px solid var(--correct); }
-  .fb-wrong   { display: block; background: #FFE8E8; color: #7A1A1A; border: 2px solid var(--wrong); }
-
-  /* ── FOOTER ───────────────────────────────────────────── */
-  footer {
-    text-align: center;
-    padding: 40px 20px 10px;
-    font-size: .95rem;
-    font-weight: 700;
-    color: #9A7AB8;
-  }
+footer {
+  text-align: center;
+  padding: 36px 20px 10px;
+  font-size: .82rem;
+  font-weight: 600;
+  color: #4a7a60;
+}
 </style>
 </head>
 <body>
 
-<header>
-  <h1>🌸 Debbie's Study Guide</h1>
-  <p>Insurance Exam Prep · Two Quizzes · You've got this! 💪</p>
-</header>
-
-<!-- TABS -->
-<div class="tabs">
-  <button class="tab-btn active" onclick="switchTab('q1',this)">📝 Quiz 1<br><small style="font-weight:600;font-size:.85em">Choose the Term</small></button>
-  <button class="tab-btn" onclick="switchTab('q2',this)">✏️ Quiz 2<br><small style="font-weight:600;font-size:.85em">Type the Answer</small></button>
+<div class="hero">
+  <h1>Study Smarter,<br>Pass with <em>Confidence</em></h1>
+  <p>Built for Debbie — study together, one question at a time. 🤍</p>
+  <div class="quiz-nav">
+    <button class="nav-btn active" onclick="switchTab('q1', this)">📝 Quiz 1</button>
+    <!-- ADD MORE QUIZ BUTTONS HERE AS DEBBIE SENDS MORE CONCEPTS -->
+    <!-- <button class="nav-btn" onclick="switchTab('q2', this)">📝 Quiz 2</button> -->
+  </div>
 </div>
 
-<!-- ══════════ QUIZ 1 ══════════ -->
+<!-- QUIZ 1 -->
 <div id="q1" class="quiz-section active">
-  <div class="section-header">
-    <h2>Quiz 1 — Choose the Right Term</h2>
-    <p>Read the definition · Pick the correct answer</p>
-  </div>
+  <div class="section-title">Insurance Fundamentals</div>
+  <div class="section-sub">Read the definition · Choose the correct term</div>
 
   <div class="scorebar">
-    <span class="scorebar-label">✨ Score</span>
-    <span class="scorebar-value" id="s1">0 / 0</span>
-    <button class="reset-btn" onclick="reset(1)">🔄 Restart</button>
+    <span class="score-label">Score</span>
+    <span class="score-value" id="s1">0 / 0</span>
+    <button class="restart-btn" onclick="buildQ1()">↺ Restart</button>
   </div>
-  <div class="progress-wrap"><div class="progress-fill" id="bar1"></div></div>
-  <div class="progress-text" id="prog1">0 of 0 answered</div>
-
+  <div class="prog-wrap"><div class="prog-fill" id="bar1"></div></div>
+  <div class="prog-text" id="prog1">0 of 0 answered</div>
   <div id="cards1"></div>
 </div>
 
-<!-- ══════════ QUIZ 2 ══════════ -->
-<div id="q2" class="quiz-section">
-  <div class="section-header">
-    <h2>Quiz 2 — Type the Answer</h2>
-    <p>Read the clue · Type the correct insurance term</p>
-  </div>
-
-  <div class="scorebar">
-    <span class="scorebar-label">✨ Score</span>
-    <span class="scorebar-value" id="s2">0 / 0</span>
-    <button class="reset-btn" onclick="reset(2)">🔄 Restart</button>
-  </div>
-  <div class="progress-wrap"><div class="progress-fill" id="bar2"></div></div>
-  <div class="progress-text" id="prog2">0 of 0 answered</div>
-
-  <div id="cards2"></div>
-</div>
-
-<footer>Made with 💜 for Debbie &nbsp;·&nbsp; You're going to pass that exam! 🎉</footer>
+<footer>Made for Debbie · You're going to pass that exam! 🎉</footer>
 
 <script>
-// ════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════
 //  QUESTION BANK — ADD NEW QUESTIONS AT THE BOTTOM
-//  Each object = one Q&A pair used for BOTH quizzes.
-//
 //  Fields:
-//   term     — the answer word / phrase
-//   hint     — memory hook (from Debbie's notes)
-//   mcDef    — the definition shown in Quiz 1 (multiple choice)
-//   mcWrong  — array of exactly 3 wrong answer choices for Quiz 1
-//   fillClue — the clue shown in Quiz 2 (fill-in-the-blank)
-//   accept   — array of acceptable lowercase spellings for Quiz 2
-// ════════════════════════════════════════════════════════
-const QUESTIONS = [
+//    term    — correct answer shown to user
+//    def     — definition shown as the question
+//    wrong   — exactly 3 wrong choices
+//    explain — explanation shown after answering
+// ═══════════════════════════════════════════════════════════
+var QUESTIONS = [
   {
     term: "Occurrence",
-    mcDef: "An event that results in an insured loss. In liability insurance, the loss does NOT have to be sudden — it can result from continuous or repeated exposure causing bodily injury or property damage neither expected nor intended by the insured.",
-    mcWrong: ["Accident", "Incident", "Exposure"],
-    fillClue: "I am an event that results in an insured loss. In liability, my loss does NOT need to be sudden — it can come from continuous exposure. What am I?",
-    accept: ["occurrence"],
-    explain: "An Occurrence is broader than an Accident. In liability insurance, damage can build up slowly over time — like chemical exposure — and still be covered. Remember: it doesn't have to be sudden!"
+    def: "An event that results in an insured loss. Unlike an accident, the loss does NOT have to be sudden — it can result from continuous or repeated exposure causing bodily injury or property damage neither expected nor intended by the insured.",
+    wrong: ["Accident", "Incident", "Fortuitous Event"],
+    explain: "If someone breathes in dust at a factory every day for 10 years and gets sick, that's not a sudden accident — it built up slowly. That slow build-up that causes a covered loss is called an Occurrence."
   },
   {
     term: "Risk Reduction",
-    mcDef: "Taking steps to reduce the probability or severity of a possible loss. Example: installing alarms and sprinkler systems to lower fire risk. One of the 4 major risk management techniques.",
-    mcWrong: ["Hazard Reduction", "Fire Loss Reduction", "Risk Avoidance"],
-    fillClue: "I am one of the 4 major risk management techniques. I involve taking steps to lower the probability OR severity of a possible loss — like installing sprinklers. What am I?",
-    accept: ["risk reduction"],
-    explain: "Risk Reduction means taking action to lower either the chance of a loss happening OR how bad it would be. Installing sprinklers doesn't prevent fire — but it reduces the damage. That's risk reduction!"
+    def: "Taking steps to reduce the probability or severity of a possible loss — for example, installing alarms and sprinkler systems to reduce fire loss risk. One of the 4 major risk management techniques.",
+    wrong: ["Fire Loss Reduction", "Loss Prevention", "Hazard Reduction"],
+    explain: "Before a big storm, smart families board up their windows so less damage happens. That's Risk Reduction: taking smart steps ahead of time to make a loss less likely or less damaging if it does happen."
   },
   {
     term: "Moral Hazard",
-    mcDef: "A condition of morals or habits that increases the probability of loss from a peril. Extreme example: an individual who previously burned their own property to collect insurance.",
-    mcWrong: ["Marale Hazard", "Morale Hazard", "Intentional Hazard"],
-    fillClue: "I am a condition of morals or habits that raises the probability of loss. An extreme example is someone who burns their own home to collect insurance money. What kind of hazard am I?",
-    accept: ["moral hazard"],
-    explain: "Moral Hazard is about bad character or dishonesty — someone who deliberately causes a loss to get paid. Don't confuse it with Morale Hazard, which is carelessness. Moral = intentional dishonesty."
+    def: "A condition of morals or habits that increases the probability of loss from a peril — for example, someone who previously burned their own property to collect insurance.",
+    wrong: ["Peril Condition", "Intentional Hazard", "Morale Hazard"],
+    explain: "Imagine a kid who accidentally breaks his toys more often after learning his parents will always buy new ones. Moral Hazard is when someone's dishonest habits make losses more likely to happen intentionally."
   },
   {
     term: "Peril",
-    mcDef: "The cause of possible loss.",
-    mcWrong: ["Hazard", "Risk", "Exposure"],
-    fillClue: "I am the cause of possible loss. Fire, theft, and flood are examples of me. What am I?",
-    accept: ["peril"],
-    explain: "A Peril is the actual cause of loss — fire, flood, theft, earthquake. A Hazard is what increases the chance of a peril happening. Think: Peril = the cause, Hazard = the condition that makes it more likely."
+    def: "The cause of possible loss.",
+    wrong: ["Exposure", "Risk", "Hazard"],
+    explain: "If your house catches fire, what caused the damage? The fire. Fire is the Peril. A peril is always the actual thing that caused the loss — fire, flood, theft, windstorm."
   },
   {
     term: "Speculative Risk",
-    mcDef: "Uncertainty as to whether a gain OR loss will occur. Example: a business that could make money or lose it. These types of risks are NOT insurable — they are illegal in insurance.",
-    mcWrong: ["Pure Risk", "Normal Risk", "Insurable Risk"],
-    fillClue: "I involve both a chance of LOSS and a chance of GAIN — like a business that could profit or fail. I am ILLEGAL to insure. What am I?",
-    accept: ["speculative risk"],
-    explain: "Speculative Risk has two possible outcomes — you could win OR lose, like gambling or starting a business. Insurance only covers Pure Risk (loss only). Speculative Risk is actually illegal to insure!"
+    def: "Uncertainty as to whether a gain OR loss will occur — such as a business that might make money or lose it. These types of risks are NOT insurable.",
+    wrong: ["Normal Risk", "Loss Risk", "Pure Risk"],
+    explain: "Starting a lemonade stand could make you money OR lose you money. That's Speculative Risk: two possible directions, win or lose. Insurance will never cover this because you might actually profit."
   },
   {
     term: "Insurer",
-    mcDef: "The party to an insurance arrangement who undertakes to indemnify for losses, provide pecuniary benefits, or render services. Preferred over 'carrier' or 'company' — a functional word applicable without ambiguity. Used in statutory law.",
-    mcWrong: ["Insured", "Owner", "Carrier"],
-    fillClue: "I am the party who undertakes to indemnify for losses in an insurance arrangement. I am the preferred term over 'carrier' or 'company' in statutory law. What am I?",
-    accept: ["insurer"],
-    explain: "The Insurer is the insurance company — the one who promises to pay. The Insured is the person being covered. In statutory law, 'Insurer' is preferred over 'carrier' or 'company' because it works for all types of organizations."
+    def: "The party to an insurance arrangement who undertakes to indemnify for losses or provide benefits. Preferred over the terms 'carrier' or 'company' in statutory law.",
+    wrong: ["Owner", "Insured", "Carrier"],
+    explain: "Someone has to be the one who promises to pay when something goes wrong. That's the Insurer. In everyday life we call them the insurance company, but on the exam and in the law, the official word is always Insurer."
   },
   {
     term: "Exposure",
-    mcDef: "The state of being subject to the possibility of loss. The extent of risk as measured by payroll, gate receipts, area, or other standards. Also: the possibility of loss to a risk caused by its surroundings.",
-    mcWrong: ["Hazard", "Peril", "Risk"],
-    fillClue: "I am the state of being subject to the possibility of loss. My extent is measured by payroll, gate receipts, or area. What am I?",
-    accept: ["exposure"],
-    explain: "Exposure measures how much risk exists — it's the size of the risk. A building next to a dynamite factory has high exposure because of its surroundings. Payroll, area, and gate receipts are all ways to measure exposure."
+    def: "The state of being subject to the possibility of loss — measured by payroll, gate receipts, area, or other standards.",
+    wrong: ["Risk Factor", "Hazard", "Peril"],
+    explain: "If you stand outside in the rain without an umbrella, you're exposed to getting wet. In insurance, Exposure is how much of something is out in the rain — how many employees, how big the building, how many tickets sold."
   },
   {
     term: "Law of Large Numbers",
-    mcDef: "This law states that the larger the number of exposures considered, the more closely the losses reported will match the underlying probability of loss. Simplest example: the more times you flip a coin, the closer results come to 50% heads and 50% tails.",
-    mcWrong: ["Actuary Law", "Mortality Table", "Loss Probability Law"],
-    fillClue: "I state that the LARGER the number of exposures, the more closely losses will match the underlying probability. Coin-flipping is my simplest example. What law am I?",
-    accept: ["law of large numbers", "law of large number"],
-    explain: "The Law of Large Numbers is why insurance works! The more people insured, the more accurately the insurer can predict losses. Flip a coin 10 times — results vary. Flip it 10,000 times — you'll get very close to 50/50."
+    def: "This law states: the larger the number of exposures considered, the more closely losses will match the underlying probability of loss — similar to how flipping a coin many times approaches 50/50.",
+    wrong: ["Actuary Law", "Probability Law", "Mortality Table"],
+    explain: "If you flip a coin 4 times, you might get heads every time. But flip it 10,000 times and you will land very close to 50% heads. That's the Law of Large Numbers — and it's how insurance companies know what to charge!"
   },
   {
     term: "Accident",
-    mcDef: "A fortuitous event — unforeseen and unintended.",
-    mcWrong: ["Incident", "Continuity", "Occurrence"],
-    fillClue: "I am a fortuitous event — unforeseen and unintended. What am I?",
-    accept: ["accident"],
-    explain: "An Accident is fortuitous — meaning it happened by chance, not on purpose. It must be unforeseen AND unintended. This is different from an Occurrence, which can include gradual or repeated exposure."
+    def: "A fortuitous event — unforeseen and unintended.",
+    wrong: ["Occurrence", "Continuity", "Incident"],
+    explain: "Think of a kid on a bike who suddenly hits a pothole and falls. Nobody planned it, nobody wanted it — that surprise, unplanned event is exactly what an Accident means in insurance."
   },
   {
     term: "Protection",
-    mcDef: "A term used interchangeably with 'coverage' to denote the insurance provided under a policy. Also used to indicate the existence of fire-fighting facilities in an area known as a 'protected' area.",
-    mcWrong: ["Conditions", "Restrictions", "Coverage Type"],
-    fillClue: "I am used interchangeably with 'coverage' and also describe the existence of fire-fighting facilities in a 'protected' area. What am I?",
-    accept: ["protection"],
-    explain: "Protection means the same thing as coverage in insurance. It also refers to whether an area has fire-fighting services — a 'protected' area has them, which affects how property insurance is rated."
+    def: "This term is used interchangeably with 'coverage' to denote the insurance provided under a policy. It also indicates the existence of fire-fighting facilities in a 'protected' area.",
+    wrong: ["Conditions", "Restrictions", "Coverage Area"],
+    explain: "When your mom puts a raincoat on you before school, she's giving you protection. Insurance works the same way — it covers you from harm. That's why Protection and coverage mean the exact same thing in an insurance policy."
   },
   {
     term: "Insurable Risk",
-    mcDef: "A risk that meets most of the following: the loss must be capable of being defined, it must be accidental, it must be large enough to cause hardship to the insured, it must belong to a homogeneous group large enough to make losses predictable, and the insurer must be able to calculate the chance of loss.",
-    mcWrong: ["Speculative Risk", "Loss Risk", "Pure Hazard"],
-    fillClue: "I meet all the key requisites: I'm accidental, definite, large enough to cause hardship, and the insurer can calculate my probability. What am I?",
-    accept: ["insurable risk"],
-    explain: "An Insurable Risk must check several boxes: it must be accidental, definite, cause real hardship, belong to a large enough group to predict losses, and the insurer must be able to calculate the cost. If it doesn't meet these — it can't be insured!"
+    def: "A risk where the loss must be capable of being defined, accidental, large enough to cause hardship, part of a homogeneous group, not subject to catastrophic simultaneous loss, and both the cost and chance of loss must be calculable.",
+    wrong: ["Loss Risk", "Pure Risk", "Speculative Risk"],
+    explain: "Pure Risk is close — it means only loss or no loss can happen. But Pure Risk is just one type of risk. To actually be covered, it also has to meet all the other rules — which is what makes it an Insurable Risk."
   },
   {
     term: "Hazard",
-    mcDef: "A condition that increases the chance of loss. It is NOT the cause of loss itself, but something that makes a loss more likely or more severe when a peril occurs.",
-    mcWrong: ["Peril", "Occurrence", "Exposure"],
-    fillClue: "I increase the probability or severity of loss from a peril, but I am NOT the cause of loss — I am just a condition. What am I?",
-    accept: ["hazard"],
-    explain: "A Hazard is a condition that makes a loss more likely — not the loss itself. Storing gasoline near a furnace is a hazard. The fire (peril) causes the loss, but the gasoline storage (hazard) made it more likely."
+    def: "A condition that increases the chance of loss. It is NOT the cause of loss itself — it makes a loss more likely or more severe when a peril occurs.",
+    wrong: ["Peril", "Occurrence", "Exposure"],
+    explain: "Storing gasoline near a furnace is a hazard. The fire (peril) causes the loss, but the gasoline storage (hazard) made it more likely to happen. A Hazard is a condition — not the cause."
   },
   {
     term: "Pure Risk",
-    mcDef: "A type of risk that involves ONLY the chance of loss — there is no possibility of financial gain. Insurance is designed to cover only this type of risk.",
-    mcWrong: ["Speculative Risk", "Moral Risk", "Normal Risk"],
-    fillClue: "I involve ONLY the chance of loss — no possibility of gain. Insurance is designed to cover me. What am I?",
-    accept: ["pure risk"],
-    explain: "Pure Risk = loss or no loss, never gain. Your house either burns down or it doesn't — you can't profit from it. This is exactly what insurance is designed to cover. Speculative Risk (chance of gain OR loss) is NOT insurable."
+    def: "A type of risk that involves ONLY the chance of loss — there is no possibility of financial gain. Insurance is designed to cover only this type of risk.",
+    wrong: ["Speculative Risk", "Moral Risk", "Normal Risk"],
+    explain: "Your house either burns down or it doesn't — you can't profit from it. That's Pure Risk: only loss is possible, never gain. This is exactly what insurance is designed to cover."
   },
   {
-    term: "Affordable",
-    mcDef: "One of the requirements for determining an insurable risk: the cost of the insurance must be this, so that people can actually buy it.",
-    mcWrong: ["Calculable", "Predictable", "Mandatory"],
-    fillClue: "To be an insurable risk, the cost of insurance must be _______ — meaning the insured can actually pay for it.",
-    accept: ["affordable"],
-    explain: "For a risk to be insurable, the premium must be affordable — if nobody can pay for the coverage, it's not practical. The cost must make sense relative to the value of what's being protected."
+    term: "Speculative Risk",
+    def: "All of the following are used to determine an insurable risk EXCEPT which one?",
+    wrong: ["Risk of loss must represent a financial hardship", "Cost of insurance must be affordable", "Loss must be calculable"],
+    explain: "Speculative Risk means you might win OR lose — like gambling or starting a business. Insurance is never allowed to cover that. It is actually illegal to insure speculative risks!"
   },
   {
-    term: "Catastrophic",
-    mcDef: "Losses of this type are NOT covered under an ideally insurable loss exposure. They are simply too widespread and large for insurance companies to handle — for example, a nuclear war or a massive natural disaster affecting millions at once.",
-    mcWrong: ["Accidental", "Definite", "Measurable"],
-    fillClue: "Losses that are _______ in nature would NOT be covered under an ideally insurable loss exposure — they're too large for insurers to manage.",
-    accept: ["catastrophic"],
-    explain: "Catastrophic losses hit too many people at once — like a nuclear disaster or a massive earthquake wiping out an entire city. Insurance works by spreading risk across many people, but if everyone loses at once, the system collapses. That's why catastrophic losses are excluded."
-  },
-
-  // ─────────────────────────────────────────────────────────
-  // ADD NEW QUESTIONS BELOW THIS LINE
-  // Copy the template and fill in all 6 fields.
-  //
-  // TEMPLATE:
-  // {
-  //   term: "Term Name",
-  //   mcDef: "The full definition shown in Quiz 1",
-  //   mcWrong: ["Wrong 1", "Wrong 2", "Wrong 3"],
-  //   fillClue: "Clue for Quiz 2 (fill-in-the-blank style)",
-  //   accept: ["correct answer lowercase", "alternate spelling if needed"],
-  //   explain: "Why this is the answer. Keep it helpful, clear, and encouraging!"
-  // },
-  // ─────────────────────────────────────────────────────────
+    term: "Losses that are catastrophic in nature",
+    def: "All of the following are characteristics of an ideally insurable loss exposure EXCEPT which one?",
+    wrong: ["Large number of similar exposure units", "Losses that are accidental", "Losses that are definite and measurable"],
+    explain: "Insurance works by spreading small losses across many people in a pool. But if ONE event wipes everybody out at the same time — like a massive earthquake destroying an entire city — there's no pool big enough to handle it. Catastrophic losses break the whole system."
+  }
 ];
 
-// ════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════
 //  STATE
-// ════════════════════════════════════════════════════════
-let state = [
-  { answered: 0, correct: 0 },  // [0] unused padding
-  { answered: 0, correct: 0 },  // [1] quiz 1
-  { answered: 0, correct: 0 }   // [2] quiz 2
-];
-const total = () => QUESTIONS.length;
+// ═══════════════════════════════════════════════════════════
+var answered1 = 0;
+var correct1  = 0;
+var LETTERS   = ['A','B','C','D'];
 
-// ════════════════════════════════════════════════════════
-//  BUILD QUIZ 1 — MULTIPLE CHOICE
-// ════════════════════════════════════════════════════════
-function buildQ1() {
-  const wrap = document.getElementById('cards1');
-  wrap.innerHTML = '';
-  shuffle(QUESTIONS).forEach((q, i) => {
-    const opts = shuffle([q.term, ...q.mcWrong]);
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.style.animationDelay = (i * 0.04) + 's';
-    card.innerHTML = `
-      <div class="q-badge">Question ${i+1} of ${total()}</div>
-      <div class="card-q">${q.mcDef}</div>
-      <div class="options">
-        ${opts.map(o => `<button class="opt-btn"
-          onclick="checkMC(this,'${esc(q.explain)}','${esc(o)}','${esc(q.term)}')">${o}</button>`).join('')}
-      </div>
-      <div class="feedback" id="fb1-${i}"></div>
-    `;
-    wrap.appendChild(card);
-  });
-  updateUI(1);
-}
-
-function checkMC(btn, explain, selected, correct) {
-  const card = btn.closest('.card');
-  card.querySelectorAll('.opt-btn').forEach(b => {
-    b.disabled = true;
-    if (b.textContent.trim() === correct) b.classList.add('correct');
-  });
-  const fb = card.querySelector('.feedback');
-  if (selected === correct) {
-    btn.classList.add('correct');
-    fb.innerHTML = `✅ <strong>Correct!</strong><br><span style="font-weight:600">${explain}</span>`;
-    fb.className = 'feedback fb-correct';
-    state[1].correct++;
-  } else {
-    btn.classList.add('wrong');
-    fb.innerHTML = `❌ The answer is: <strong>${correct}</strong><br><span style="font-weight:600">${explain}</span>`;
-    fb.className = 'feedback fb-wrong';
-  }
-  state[1].answered++;
-  updateUI(1);
-}
-
-// ════════════════════════════════════════════════════════
-//  BUILD QUIZ 2 — FILL IN THE BLANK
-// ════════════════════════════════════════════════════════
-function buildQ2() {
-  const wrap = document.getElementById('cards2');
-  wrap.innerHTML = '';
-  shuffle(QUESTIONS).forEach((q, i) => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.style.animationDelay = (i * 0.04) + 's';
-    card.innerHTML = `
-      <div class="q-badge">Question ${i+1} of ${total()}</div>
-      <div class="card-q">${q.fillClue}</div>
-      <div class="fill-wrap">
-        <input class="fill-input" id="inp2-${i}" type="text"
-          placeholder="Type your answer…"
-          autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" />
-        <button class="check-btn" id="cbtn2-${i}"
-          onclick="checkFill(${i})">Check Answer ✨</button>
-      </div>
-      <div class="feedback" id="fb2-${i}"></div>
-    `;
-    wrap.appendChild(card);
-    setTimeout(() => {
-      document.getElementById(`inp2-${i}`)
-        .addEventListener('keydown', e => { if(e.key==='Enter') checkFill(i); });
-    }, 0);
-  });
-  updateUI(2);
-}
-
-function checkFill(idx) {
-  const input = document.getElementById(`inp2-${idx}`);
-  const btn   = document.getElementById(`cbtn2-${idx}`);
-  const fb    = document.getElementById(`fb2-${idx}`);
-  const val   = input.value.trim().toLowerCase();
-  const q     = QUESTIONS[idx];
-
-  input.disabled = true;
-  btn.disabled   = true;
-
-  const isCorrect = q.accept.some(a => val === a || val.replace(/\s+/g,'') === a.replace(/\s+/g,''));
-  if (isCorrect) {
-    input.classList.add('correct');
-    fb.innerHTML = `✅ <strong>Correct!</strong><br><span style="font-weight:600">${q.explain}</span>`;
-    fb.className = 'feedback fb-correct';
-    state[2].correct++;
-  } else {
-    input.classList.add('wrong');
-    fb.innerHTML = `❌ The answer is: <strong>${q.term}</strong><br><span style="font-weight:600">${q.explain}</span>`;
-    fb.className = 'feedback fb-wrong';
-  }
-  state[2].answered++;
-  updateUI(2);
-}
-
-// ════════════════════════════════════════════════════════
-//  UI HELPERS
-// ════════════════════════════════════════════════════════
-function updateUI(n) {
-  const { answered, correct } = state[n];
-  const t = total();
-  document.getElementById(`s${n}`).textContent = `${correct} / ${t}`;
-  document.getElementById(`bar${n}`).style.width = `${(answered/t)*100}%`;
-  document.getElementById(`prog${n}`).textContent = `${answered} of ${t} answered`;
-}
-
-function reset(n) {
-  state[n] = { answered: 0, correct: 0 };
-  if (n === 1) buildQ1(); else buildQ2();
-}
-
-function switchTab(id, btn) {
-  document.querySelectorAll('.quiz-section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  btn.classList.add('active');
-}
-
+// ═══════════════════════════════════════════════════════════
+//  SHUFFLE
+// ═══════════════════════════════════════════════════════════
 function shuffle(arr) {
-  const a = [...arr];
-  for (let i = a.length-1; i > 0; i--) {
-    const j = Math.floor(Math.random()*(i+1));
-    [a[i],a[j]] = [a[j],a[i]];
+  var a = arr.slice();
+  for (var i = a.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
   }
   return a;
 }
 
-function esc(s) { return s.replace(/'/g,"\\'").replace(/"/g,'&quot;'); }
+// ═══════════════════════════════════════════════════════════
+//  BUILD QUIZ 1
+// ═══════════════════════════════════════════════════════════
+function buildQ1() {
+  answered1 = 0;
+  correct1  = 0;
+  updateUI();
 
-// ════════════════════════════════════════════════════════
+  var wrap = document.getElementById('cards1');
+  wrap.innerHTML = '';
+  var shuffledQ = shuffle(QUESTIONS);
+
+  for (var i = 0; i < shuffledQ.length; i++) {
+    (function(q, qIndex) {
+      var opts = shuffle([q.term].concat(q.wrong));
+      var card = document.createElement('div');
+      card.className = 'card';
+      card.style.animationDelay = (qIndex * 0.03) + 's';
+
+      var optHTML = '';
+      for (var k = 0; k < opts.length; k++) {
+        optHTML += '<button class="opt-btn" data-answer="' + encodeURIComponent(opts[k]) + '">' +
+          '<span class="opt-letter">' + LETTERS[k] + '</span>' +
+          '<span>' + opts[k] + '</span>' +
+          '</button>';
+      }
+
+      card.innerHTML =
+        '<div class="q-badge">Question ' + (qIndex + 1) + ' of ' + QUESTIONS.length + '</div>' +
+        '<div class="q-text">' + q.def + '</div>' +
+        '<div class="options">' + optHTML + '</div>' +
+        '<div class="feedback"></div>';
+
+      wrap.appendChild(card);
+
+      var buttons = card.querySelectorAll('.opt-btn');
+      for (var b = 0; b < buttons.length; b++) {
+        buttons[b].addEventListener('click', (function(btn, correctTerm, explanation) {
+          return function() {
+            var selected = decodeURIComponent(btn.getAttribute('data-answer'));
+            var allBtns = card.querySelectorAll('.opt-btn');
+            for (var x = 0; x < allBtns.length; x++) {
+              allBtns[x].disabled = true;
+              if (decodeURIComponent(allBtns[x].getAttribute('data-answer')) === correctTerm) {
+                allBtns[x].classList.add('correct');
+              }
+            }
+            var fb = card.querySelector('.feedback');
+            if (selected === correctTerm) {
+              btn.classList.add('correct');
+              fb.className = 'feedback fb-correct';
+              fb.innerHTML = '<span class="fb-label">Correct! ✓</span>' + explanation;
+              correct1++;
+            } else {
+              btn.classList.add('wrong');
+              fb.className = 'feedback fb-wrong';
+              fb.innerHTML = '<span class="fb-label">Not quite! The answer is: ' + correctTerm + '</span>' + explanation;
+            }
+            answered1++;
+            updateUI();
+          };
+        })(buttons[b], q.term, q.explain));
+      }
+    })(shuffledQ[i], i);
+  }
+}
+
+// ═══════════════════════════════════════════════════════════
+//  UPDATE SCORE UI
+// ═══════════════════════════════════════════════════════════
+function updateUI() {
+  var t = QUESTIONS.length;
+  document.getElementById('s1').textContent = correct1 + ' / ' + t;
+  document.getElementById('bar1').style.width = ((answered1 / t) * 100) + '%';
+  document.getElementById('prog1').textContent = answered1 + ' of ' + t + ' answered';
+}
+
+// ═══════════════════════════════════════════════════════════
+//  TAB SWITCH
+// ═══════════════════════════════════════════════════════════
+function switchTab(id, btn) {
+  var sections = document.querySelectorAll('.quiz-section');
+  for (var i = 0; i < sections.length; i++) sections[i].classList.remove('active');
+  var navBtns = document.querySelectorAll('.nav-btn');
+  for (var j = 0; j < navBtns.length; j++) navBtns[j].classList.remove('active');
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ═══════════════════════════════════════════════════════════
 //  INIT
-// ════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════
 buildQ1();
-buildQ2();
 </script>
 </body>
 </html>
